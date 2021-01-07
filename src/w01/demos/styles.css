@@ -1,0 +1,29 @@
+body {
+    display:grid;
+    /* Each "line" represents a "row" */
+    grid-template-areas: 
+        "link head head"
+        "link main main"
+        "link foot foot";
+}
+
+body > main {
+    grid-area: main;
+    border: solid thin red;
+}
+
+body > header {
+    /* Custom name for template area this fill into */
+    grid-area: head;
+    border: solid thin yellow;
+}
+
+body > footer {
+    grid-area: foot;
+    border: solid thin green;
+}
+
+body > nav {
+    grid-area: link;
+    border: solid thin blue;
+}
