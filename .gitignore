@@ -1,15 +1,5 @@
-# General folders for non-trackable info
-[Nn]o[Tt]rack/
-[Rr]n[Dd]/
-
-# Instructor Patches and custom tools
-
-[Ww]orkbook*.patch
-.snag  # Snag-It files
-.cr/   # Code-Rush
-
 # Zip files - Because we're using version control.
-## "Damn it Jim, I'm a repository, not a FTP site!
+## "Damn it Jim, I'm a repository, not a FTP site!"
 .zip
 .zipx
 .rar
@@ -23,6 +13,16 @@
 .msi
 .tgz
 
+# General folders for non-trackable info
+[Nn]o[Tt]rack/
+[Rr]n[Dd]/
+
+# Instructor Patches and custom tools
+
+[Ww]orkbook*.patch
+.snag  # Snag-It files
+.cr/   # Code-Rush
+
 # VuePress
 .vuepress/dist/
 
@@ -30,8 +30,8 @@
 *.code-workspace
 
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudio,visualstudiocode,microsoftoffice,node,vue
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,visualstudio,visualstudiocode,microsoftoffice,node,vue
+# Created by https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudio,visualstudiocode,microsoftoffice
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,windows,visualstudio,visualstudiocode,microsoftoffice
 
 ### macOS ###
 # General
@@ -204,17 +204,6 @@ dist
 # Ignore all local history of files
 .history
 .ionide
-
-### Vue ###
-# gitignore template for Vue.js projects
-#
-# Recommended template: Node.gitignore
-
-# TODO: where does this rule come from?
-docs/_book
-
-# TODO: where does this rule come from?
-test/
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -594,4 +583,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudio,visualstudiocode,microsoftoffice,node,vue
+# End of https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudio,visualstudiocode,microsoftoffice
