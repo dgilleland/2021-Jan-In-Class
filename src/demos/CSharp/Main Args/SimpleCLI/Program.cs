@@ -8,6 +8,7 @@ namespace SimpleCLI
 {
     class Program
     {
+        // The access modifier is private by default
         static void Main(string[] args)
         {
             var app = new Program();
