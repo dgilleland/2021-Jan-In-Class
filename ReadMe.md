@@ -1,4 +1,4 @@
-# CPSC-1517 - **~~Student~~ Instructor Workbook** (Jan 2021)
+# CPSC-1517 **A04** - **~~Student~~ Instructor Workbook** (Jan 2021)
 
 > **Dan Gilleland**
 
