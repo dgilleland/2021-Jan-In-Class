@@ -4,6 +4,10 @@
 >
 > Students must complete Quiz 1 by the end of this week.
 
+Here is my screenshot:
+
+![alt text](./images/Jing.png)
+
 TODO:
 
 - [ ] Lesson topics of Events
