@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace SimpleCLI
 {
-    class Program
+    // The default access modifer for a class is internal
+    class Program // The color of the Program class is the color for all "programmer-defined" data types
     {
         // The access modifier is private by default
         static void Main(string[] args)
         {
-            var app = new Program();
-            app.Run(args);
+            var app = new Program(); // The new keyword instantiates an object based on the Program class.
+            app.Run(args); // I am calling the non-static method of the Program class.
         }
 
         private void Run(string[] args)
