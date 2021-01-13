@@ -1,4 +1,4 @@
-# CPSC-1520 - **~~Student~~ Instructor Workbook** (Jan 2021)
+# CPSC-1520 - [OA04](#section-a04) - **~~Student~~ Instructor Workbook** (Jan 2021)
 
 > **Dan Gilleland**
 
@@ -70,3 +70,9 @@ Custom badges for indicating documentation status and code status are generated 
 > ![Code](https://img.shields.io/badge/Code%20Status-Demo%20|%20Practice-blueviolet?logo=Visual%20Studio%20Code&labelColor=indigo)
 >
 > ![Docs](https://img.shields.io/badge/Documentation%20Status-~70--90%25-green)
+
+----
+
+## Section A04
+
+![](./docs/mynotes/images/DMIT-career-paths.png)
