@@ -101,3 +101,7 @@ header > address > a {
 header > address > a:hover {
     text-decoration: underline;
 }
+
+main > h1 {
+    color: tomato;
+}

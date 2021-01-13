@@ -8,6 +8,8 @@
 
 > *Create an un-ordered list here for your own table of contents, and add links to additional Markdown pages in this folder.*
 
+- [**JavaScript in the Browser**](./01-JS-in-the-browser.md)
+
 ----
 
 <!-- Custom Styling - Modify for Fun and Learning - No Warranties Implied -->
