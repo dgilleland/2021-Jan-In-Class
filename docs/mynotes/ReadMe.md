@@ -6,7 +6,11 @@
 
 ## Table of Contents
 
-> *Create an un-ordered list here for your own table of contents, and add links to additional Markdown pages in this folder.*
+> *There are **three** things you must always be expanding your knowlege of:*
+>
+> - Know the **problem** you are trying to solve
+> - Know your **language** (i.e.: JavaScript)
+> - Know your **tools**
 
 - [**JavaScript in the Browser**](./01-JS-in-the-browser.md)
 
