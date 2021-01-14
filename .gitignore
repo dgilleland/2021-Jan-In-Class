@@ -584,3 +584,4 @@ MigrationBackup/
 .ionide/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudio,visualstudiocode,microsoftoffice
+src/demos/CSharp/Simple File Input-Ouput/.cr/personal/FavoritesList/List.xml
