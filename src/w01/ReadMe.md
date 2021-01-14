@@ -2,6 +2,8 @@
 
 > Review the [**LOGs**](./LOGs.md) for this class.
 
+![JavaScript in Browser](./JS-in-the-browser.png)
+
 ----
 
 ## Days 1 & 2
