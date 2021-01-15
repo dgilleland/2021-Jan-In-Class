@@ -22,6 +22,7 @@
 [Ww]orkbook*.patch
 .snag  # Snag-It files
 .cr/   # Code-Rush
+src/**/.cr/**/*
 
 # VuePress
 .vuepress/dist/
