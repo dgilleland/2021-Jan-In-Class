@@ -7,6 +7,7 @@
 [Ww]orkbook*.patch
 .snag  # Snag-It files
 .cr/   # Code-Rush
+src/**/.cr/**/*
 
 # Zip files - Because we're using version control.
 ## "Damn it Jim, I'm a repository, not a FTP site!
