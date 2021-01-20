@@ -1,7 +1,7 @@
 /*
 
 	Below, we have a solution that makes use of document.querySelector quite a bit.
-	Create a function to 'wrap' the document.querySelector functionality so that it requires
+	Create a function to "wrap" the document.querySelector functionality so that it requires
 	less typing to call the function.
 
 	The function signature should be as follows:

@@ -18,6 +18,10 @@
   - [ ] Install [Required Software](../../ReadMe.md)
     - [git](https://git-scm.com/downloads)
     - [Visual Studio **Code**](https://code.visualstudio.com)
+    - Some kind of screen-shot program (e.g.: Jing)
+
+      ![Jing](./images/Jing.png)
+
 - **Introduction to git and GitHub**
   - [ ] Discuss git and version control
   - [ ] Setup student GitHub accounts

@@ -62,7 +62,7 @@ it a try.
 
 > Figure 1. Sample output from the above steps
 >
-> ![](images/fig.1.png)
+> ![](./images/fig.1.png)
 
 ### Returning a Value
 
@@ -100,6 +100,6 @@ As a final example, we will use this newly declared function to update the inner
 
 > Figure 2. Sample output from the above steps
 >
-> ![](images/fig.2.png)
+> ![](./images/fig.2.png)
 
 As you can see, functions can prove to be powerful tools when building up web applications.
