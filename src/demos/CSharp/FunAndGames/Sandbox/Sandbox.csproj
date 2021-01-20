@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardGame\CardSuit.cs" />
+    <Compile Include="CardGame\CardValue.cs" />
+    <Compile Include="CardGame\DeckOfCards.cs" />
+    <Compile Include="CardGame\PlayingCard.cs" />
     <Compile Include="Die.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
