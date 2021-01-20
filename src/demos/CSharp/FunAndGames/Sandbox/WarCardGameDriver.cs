@@ -1,5 +1,6 @@
 ﻿using Sandbox.CardGame;
 using System;
+using static System.Console;
 using System.Linq;
 
 namespace Sandbox
@@ -31,14 +32,49 @@ namespace Sandbox
         }
         void PlayGame()
         {
-            throw new NotImplementedException();
+            // Loop until one of the players is out of cards
+            while(Player1.HasCards && Player2.HasCards)
+            {
+                // Showing each card
+                RevealCards(); // I will only do console I/O from my Driver class
+                ; // TEMP LINE
+                Battle();
+            }
+        }
+        void Battle()
+        {
+            if(Player1.ShowCard().Value > Player2.ShowCard().Value)
+            {
+                // Player 1 wins
+                Player1.Add(Player1.RemoveTopCard()); // add to the bottom of the deck
+                Player1.Add(Player2.RemoveTopCard()); // gets the other player's card
+            }
+            else if(Player2.ShowCard().Value > Player1.ShowCard().Value)
+            {
+                // Player 2 wins
+                Player2.Add(Player2.RemoveTopCard()); // add to the bottom of the deck
+                Player2.Add(Player1.RemoveTopCard());
+            }
+            else
+            {
+                // It's a tie
+            }
+        }
+        void RevealCards()
+        {
+            var card1 = Player1.ShowCard();
+            var card2 = Player2.ShowCard();
+            Write(card1);
+            Write("\t");
+            Write(card2);
+            WriteLine();
         }
 
         private HandOfCards Player1 = new HandOfCards();
         private HandOfCards Player2 = new HandOfCards();
         void Welcome()
         {
-            throw new NotImplementedException();
+            WriteLine("WAAARRR!!\n\n");
         }
     }
 }

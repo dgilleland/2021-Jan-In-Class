@@ -12,7 +12,10 @@ namespace Sandbox
         {
             // Create an instance of my Program class that will
             // act as the "driver" for my game.
-            DieGameDriver app = new DieGameDriver();
+            //DieGameDriver app = new DieGameDriver();
+            //app.Start();
+
+            var app = new WarCardGameDriver();
             app.Start();
         }
     }
