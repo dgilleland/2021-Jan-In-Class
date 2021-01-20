@@ -47,10 +47,13 @@
     <Compile Include="CardGame\CardSuit.cs" />
     <Compile Include="CardGame\CardValue.cs" />
     <Compile Include="CardGame\DeckOfCards.cs" />
+    <Compile Include="CardGame\HandOfCards.cs" />
     <Compile Include="CardGame\PlayingCard.cs" />
     <Compile Include="Die.cs" />
+    <Compile Include="DieGameDriver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WarCardGameDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
