@@ -9,3 +9,7 @@ body {
 .hidden {
 	display: none;
 }
+
+.purple {
+	color: purple;
+}

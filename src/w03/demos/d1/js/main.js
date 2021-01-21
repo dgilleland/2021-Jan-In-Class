@@ -2,7 +2,7 @@
 var featureImage = document.querySelector('img.feature');
 
 // 2. create the event listener function
-function handleFeatureClick() {
+const handleFeatureClick = function () {
 	console.log('img.feature was clicked...');
 	var desc = document.querySelector('.feature.description');
 	desc.classList.remove('hidden');

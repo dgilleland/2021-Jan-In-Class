@@ -3,6 +3,7 @@ var featureImage = document.querySelector('img.feature');
 var featureLink = document.querySelector('a.feature.link');
 
 // 2. create the event listener function
+// A - Make these functions into constants
 function handleFeatureImageClick() {
 	console.log('img.feature was clicked...');
 	var desc = document.querySelector('.feature.description');
