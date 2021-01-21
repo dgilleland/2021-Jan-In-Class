@@ -35,6 +35,7 @@ namespace Sandbox
             // Loop until one of the players is out of cards
             while(Player1.HasCards && Player2.HasCards)
             {
+                _CardCount = 0;
                 Battle();
             }
         }
@@ -42,23 +43,36 @@ namespace Sandbox
         {
             // Showing each card
             RevealCards(); // I will only do console I/O from my Driver class
+            _CardCount++;
             if(Player1.ShowCard().Value > Player2.ShowCard().Value)
             {
                 // Player 1 wins
-                Player1.Add(Player1.RemoveTopCard()); // add to the bottom of the deck
-                Player1.Add(Player2.RemoveTopCard()); // gets the other player's card
+                Player1.Add(Player1.RemoveTopCard(_CardCount)); // add to the bottom of the deck
+                Player1.Add(Player2.RemoveTopCard(_CardCount)); // gets the other player's card
             }
             else if(Player2.ShowCard().Value > Player1.ShowCard().Value)
             {
                 // Player 2 wins
-                Player2.Add(Player2.RemoveTopCard()); // add to the bottom of the deck
-                Player2.Add(Player1.RemoveTopCard());
+                Player2.Add(Player2.RemoveTopCard(_CardCount)); // add to the bottom of the deck
+                Player2.Add(Player1.RemoveTopCard(_CardCount));
             }
             else
             {
                 // It's a tie
+                War();
             }
+            WriteLine($"Player 1 has {Player1.Count} cards.");
+            WriteLine($"Player 2 has {Player2.Count} cards.");
+            WriteLine("Press [enter] to play next hand >> ");
+            ReadLine();
         }
+        void War()
+        {
+            WriteLine("!! WAR !!");
+            _CardCount++;
+            Battle();
+        }
+        private int _CardCount;
         void RevealCards()
         {
             var card1 = Player1.ShowCard();
