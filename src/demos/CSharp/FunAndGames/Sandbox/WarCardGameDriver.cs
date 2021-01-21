@@ -35,14 +35,13 @@ namespace Sandbox
             // Loop until one of the players is out of cards
             while(Player1.HasCards && Player2.HasCards)
             {
-                // Showing each card
-                RevealCards(); // I will only do console I/O from my Driver class
-                ; // TEMP LINE
                 Battle();
             }
         }
         void Battle()
         {
+            // Showing each card
+            RevealCards(); // I will only do console I/O from my Driver class
             if(Player1.ShowCard().Value > Player2.ShowCard().Value)
             {
                 // Player 1 wins
