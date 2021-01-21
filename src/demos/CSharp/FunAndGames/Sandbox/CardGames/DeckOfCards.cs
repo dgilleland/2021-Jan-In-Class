@@ -19,5 +19,15 @@ namespace Sandbox.CardGames
                 foreach (CardValue value in allValues)
                     Cards.Add(new PlayingCard(suit, value));
         }
+        public void Shuffle()
+        {
+            for (int counter = 0; counter < 500; counter++)
+            {
+                int index = Rnd.Next(Cards.Count);
+                PlayingCard card = Cards[0];
+                Cards.RemoveAt(0);
+                Cards.Insert(index, card);
+            }
+        }
     }
 }

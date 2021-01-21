@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox.CardGames;
+using System;
 
 
 namespace Sandbox
@@ -9,6 +10,8 @@ namespace Sandbox
         {
             // Setup of the game
             // 1) We will have two players who are dealt 5 cards each for their hands.
+            var deck = new DeckOfCards();
+            deck.Shuffle();
             // 2) Players determine if they have any pairs and if so, put them in a pile
             // Play of the game
             // - Turn-based game where each player takes a turn, and on each turn they
