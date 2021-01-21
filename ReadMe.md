@@ -2,7 +2,7 @@
 
 > **Dan Gilleland**
 
-This repository is a **Student Workbook** "template repository" containing [**demos**](./src/demos/ReadMe.md) as well as a place for you to try out [**tutorials** and **practice materials**](./src/practice/ReadMe.md). Learning Outcomes ([**LOGs**](./docs/logs/ReadMe.md)) and other useful notes can be found in the [**docs** folder](./docs). Also, you are encouraged to use the [**docs/mynotes**](./docs/mynotes) folder to journal about what you are learning throughout this course.
+This repository is a **Student Workbook** "template repository" containing [**demos**](./src/demos/ReadMe.md) as well as a place for you to try out [**tutorials** and **practice materials**](./src/practice/ReadMe.md). Learning Outcomes ([**LOGs**](./docs/logs/ReadMe.md)) and other useful notes can be found in the [**docs** folder](./docs), such as links to the [Reading Materials](./docs/Readings.md) for the course. Also, you are encouraged to use the [**docs/mynotes**](./docs/mynotes) folder to journal about what you are learning throughout this course.
 
 > :warning: **Do *NOT*** use this repository for any assignments that are worth marks. :warning:
 
