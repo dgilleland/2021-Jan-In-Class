@@ -46,9 +46,14 @@
   <ItemGroup>
     <Compile Include="CardGames\CardSuit.cs" />
     <Compile Include="CardGames\CardValue.cs" />
+    <Compile Include="CardGames\DeckOfCards.cs" />
+    <Compile Include="CardGames\PileOfCards.cs" />
+    <Compile Include="CardGames\PlayerCards.cs" />
     <Compile Include="CardGames\PlayingCard.cs" />
+    <Compile Include="CardGames\SetOfCards.cs" />
     <Compile Include="Die.cs" />
     <Compile Include="DieGameDriver.cs" />
+    <Compile Include="GoFishGameDriver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

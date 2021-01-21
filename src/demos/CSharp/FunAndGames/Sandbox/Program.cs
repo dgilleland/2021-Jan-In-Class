@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Sandbox
 {
@@ -12,10 +9,9 @@ namespace Sandbox
         {
             // Create an instance of my Program class that will
             // act as the "driver" for my game.
-            DieGameDriver app = new DieGameDriver();
+            //DieGameDriver app = new DieGameDriver();
+            GoFishGameDriver app = new GoFishGameDriver();
             app.Start();
         }
-
-        // These are the non-static members of the Program class
     }
 }
