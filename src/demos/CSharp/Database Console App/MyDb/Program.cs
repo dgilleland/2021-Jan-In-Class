@@ -32,6 +32,19 @@ namespace MyDb
         public string Name { get; set; }
     }
     /// <summary>
+    /// This is an Entity clas that mirrors the structure of the Assignments table.
+    /// </summary>
+    public class Assignment
+    {
+        public int AssignmentId { get; set; }
+        public string Name { get; set; }
+        public short Weight { get; set; }
+        public string CourseId { get; set; }
+        public double PossibleMarks { get; set; }
+        public double EarnedMarks { get; set; }
+    }
+
+    /// <summary>
     /// This is a virtual representation of my database.
     /// </summary>
     /// <seealso cref="System.Data.Entity.DbContext" />
@@ -43,5 +56,6 @@ namespace MyDb
         }
 
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Assignment> Assignments { get; set; }
     }
 }
