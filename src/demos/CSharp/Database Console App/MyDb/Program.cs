@@ -12,14 +12,20 @@ namespace MyDb
         static void Main(string[] args)
         {
             List<Course> data;
+            List<Assignment> marks;
             // The following using keyword is different from the using keyword at the top of this file.
             using (var context = new A03Context()) // "Clean-up" after "using" this object
             {
                 data = context.Courses.ToList();
+                marks = context.Assignments.ToList();
             }
             foreach(Course course in data)
             {
                 Console.WriteLine($"{course.CourseId} - {course.Name}");
+            }
+            foreach (Assignment item in marks)
+            {
+                Console.WriteLine($"{item.CourseId} - ({item.Weight} %) {item.Name}");
             }
         }
     }
@@ -40,8 +46,8 @@ namespace MyDb
         public string Name { get; set; }
         public short Weight { get; set; }
         public string CourseId { get; set; }
-        public double PossibleMarks { get; set; }
-        public double EarnedMarks { get; set; }
+        public double? PossibleMarks { get; set; }
+        public double? EarnedMarks { get; set; }
     }
 
     /// <summary>
