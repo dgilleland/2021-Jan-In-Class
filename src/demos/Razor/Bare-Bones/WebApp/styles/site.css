@@ -1,0 +1,25 @@
+﻿body {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "head head head head head" "link main main main main" "foot main main main main"
+}
+
+    body > main {
+        grid-area: main;
+        border: solid thin blue;
+    }
+
+    body > header {
+        grid-area: head;
+        border: solid thin green;
+    }
+
+    body > footer {
+        grid-area: foot;
+        border: solid thin red;
+    }
+
+    body > nav {
+        grid-area: link;
+        border: solid thin orange;
+    }
