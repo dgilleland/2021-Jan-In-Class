@@ -12,6 +12,7 @@
     body > header {
         grid-area: head;
         border: solid thin green;
+        background: url('/Images/240.jpg');
     }
 
     body > footer {
