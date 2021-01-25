@@ -18,7 +18,7 @@ We will implement some very basic interaction together that relies on a link to 
 
 > Figure 1. Starting project output
 
-![](images/fig.1.png)
+![](./images/fig.1.png)
 
 The tasks we need to take care of are the following:
 
