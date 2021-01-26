@@ -2,39 +2,20 @@
 <html>
 <head>
     <title></title>
-    <style type="text/css">
-        body {
-            display: grid;
-            grid-gap: 10px;
-            grid-template-areas: "link head head head head"
-                                 "link main main main main"
-                                 "foot main main main main";
-        }
-            body > header {
-                grid-area: head;
-                border: solid thin green;
-            }
-            body > footer {
-                grid-area: foot;
-                border: solid thin orange;
-            }
-            body > main {
-                grid-area: main;
-                border: solid thin blue;
-            }
-            body > nav {
-                grid-area: link;
-                border: solid thin red;
-            }
-    </style>
+    <link rel="stylesheet" href="~/styles/site.css" />
 </head>
 <body>
     <header>
         <h1>My First Razor Web App</h1>
     </header>
-    <footer>&copy; 2021 - Dan Gilleland</footer>
+    <footer>&copy; @DateTime.Today.ToLongDateString() - Dan Gilleland</footer>
     <main>
         <h2>Welcome</h2>
+        <p>Homework</p>
+        <ul>
+            <li>Create your own ASP.NET Web Application with an `index.cshtml` razor web page.</li>
+            <li>Copy over an HTML/CSS/JS sample from your Web Fundamentals class and apply it to your ASP.NET Web application.</li>
+        </ul>
     </main>
     <nav>
         <ul>
