@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-areas: "link head head head head"
+                                 "link main main main main"
+                                 "foot main main main main";
+        }
+            body > header {
+                grid-area: head;
+                border: solid thin green;
+            }
+            body > footer {
+                grid-area: foot;
+                border: solid thin orange;
+            }
+            body > main {
+                grid-area: main;
+                border: solid thin blue;
+            }
+            body > nav {
+                grid-area: link;
+                border: solid thin red;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My First Razor Web App</h1>
+    </header>
+    <footer>&copy; 2021 - Dan Gilleland</footer>
+    <main>
+        <h2>Welcome</h2>
+    </main>
+    <nav>
+        <ul>
+            <li><a href="#">content</a></li>
+            <li><a href="#">content</a></li>
+            <li><a href="#">content</a></li>
+            <li><a href="#">content</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
