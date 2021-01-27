@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link rel="stylesheet" href="~/styles/site.css" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <main>
+        @RenderBody()
+    </main>
+    <header>
+        <h1>Bare-Bones Razor</h1>
+    </header>
+    <footer>&copy; @DateTime.Today.Year - Dan Gilleland</footer>
+    <nav>
+        <ul>
+            <li><a href="~/Default.cshtml">Home Page</a></li>
+            <li><a href="~/About.cshtml">About Us</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
