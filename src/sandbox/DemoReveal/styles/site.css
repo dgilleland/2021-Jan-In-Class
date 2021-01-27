@@ -14,10 +14,6 @@ main > div {
     font-size: 32px;
 }
 
-main > img {
-    grid-row: 1 / span 5;
-    grid-column: 1 / span 5;
-}
 
 .reveal {
     background-color: transparent;
