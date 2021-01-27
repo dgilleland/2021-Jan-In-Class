@@ -2,6 +2,16 @@
     Page.Title = "Default Page";
     Layout = "~/_Layout.cshtml";
 }
+@section head {
+    <style>
+        main > h1:first-child {
+            text-decoration: underline;
+        }
+    </style>
+} 
+@section pageFooter {
+    <p>Current Server Time is @DateTime.Now.ToShortTimeString()</p>
+}
 
 <h1>Welcome to the @Page.Title</h1>
 

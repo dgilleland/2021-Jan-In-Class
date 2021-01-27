@@ -1,0 +1,30 @@
+﻿@{
+    Page.Title = "Contact Us";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h2>@Page.Title</h2>
+<p>You can contact us via the form below.</p>
+
+<form method="post">
+    Your Name: <input type="text" name="personName" required="required" />
+    Your Email: <input type="email" name="personEmail" required="required" />
+    <br />
+    Your Message: <textarea name="message" cols="120" rows="5"></textarea>
+    <button type="submit">Send Message</button>
+</form>
+
+@{ 
+    if(IsPost)
+    {
+        // Grab the data sent by the browser
+        string name = Request.Form["personName"];
+        string email = Request.Form["personEmail"];
+        string message = Request.Form["message"];
+        <p>Thank you @name. We will get back to you shortly at @email.</p>
+    }
+}
+
+@section pageFooter {
+    <p>Contact us by phone <b>780.555.1212</b></p>
+}
