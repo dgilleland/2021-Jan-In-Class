@@ -10,10 +10,8 @@ main {
 main > div {
     border: solid thin blue;
     background-color: aqua;
-    vertical-align: middle;
     text-align: center;
     font-size: 32px;
-    height: fit-content();
 }
 
 main > img {
@@ -23,4 +21,5 @@ main > img {
 
 .reveal {
     background-color: transparent;
+    border: 0;
 }
