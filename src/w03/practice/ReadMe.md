@@ -46,9 +46,9 @@ So now we can create a function that carries out this task.
 > Example 1. Feature link event listener function
 
 ```js
-function featureLinkHandler() {
-  var featureImage = document.querySelector('img.feature');
-  featureImage.src = featureLink.href;
+const featureLinkHandler = function (evt) {
+  let featureImage = document.querySelector('img.feature');
+  featureImage.src = evt.target.href;
   featureImage.classList.remove('hidden');
 }
 ```
@@ -68,22 +68,22 @@ featureLink.addEventListener('click', featureLinkHandler);
 
 The important thing to note from the example is that the featureLinkHandler is not called at this time. The function is simply passed as a variable, as it is intended to be called at some future point when the link is actually clicked.
 
-#### Step 4: It's broken!?
+##### Testing: It's broken!?
 
-You should now reload the web page and test your code. Remember to first look in the console for any errors you may have made (e.g. typos, syntax errors, etc.) and fix those first. Once you can load the page without any errors, click the link and … it doesn't work!
+You should now reload the web page and test your code. Remember to first look in the console for any errors you may have made (e.g. typos, syntax errors, etc.) and fix those first. Once you can load the page without any errors, click the link and … it doesn't work! Or more specifically, the `<a>` tag did its default behavour of navigating to another page.
 
 What should happen at this time is that the image actually loads in the page, replacing our index.html page. Didn't we take all the necessary steps? Well yes and no. Our approach is good but we overlooked one thing: clicking hyperlinks is already handled by a default behaviour in the browser, and it's still being used. What we need to do is prevent this from happening.
 
-#### Step 5: Preventing the default behaviour
+#### Step 4: Preventing the default behaviour
 
 In order to prevent the default behaviour, we need access to the actual event object that represents all the information we may need about what just happened. This object can be accessed as the first parameter in our function, so we need to provide a name for it in our function declaration:
 
 > Example 3. Adding a parameter for the event object
 
 ```js
-function featureLinkHandler(evt) {
-  var featureImage = document.querySelector('img.feature');
-  featureImage.src = featureLink.href;
+const featureLinkHandler = function (evt) {
+  let featureImage = document.querySelector('img.feature');
+  featureImage.src = evt.target.href;
   featureImage.classList.remove('hidden');
 }
 ```
@@ -95,9 +95,9 @@ Once you have access to the event object, you can call any number of available f
 > Example 4. Adding a parameter for the event object
 
 ```js
-function featureLinkHandler(evt) {
-  var featureImage = document.querySelector('img.feature');
-  featureImage.src = featureLink.href;
+const featureLinkHandler = function (evt) {
+  let featureImage = document.querySelector('img.feature');
+  featureImage.src = evt.target.href;
   featureImage.classList.remove('hidden');
   evt.preventDefault();
 }

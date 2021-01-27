@@ -1,12 +1,14 @@
 // Practice Solution
 
-const featureLinkHandler = function (evt) {
-    var featureImage = document.querySelector('img.feature');
-    featureImage.src = featureLink.href;
+var featureLink = document.querySelector('a.feature.link'); // Step 1
+
+// Another common term for our event-handling functions is "callback"
+const featureLinkHandler = function (evt) { // Step 2
+    let featureImage = document.querySelector('img.feature');
+    featureImage.src = evt.target.href;
     featureImage.classList.remove('hidden');
-    evt.preventDefault();
+    evt.preventDefault(); // Last Step - stopping the default behaviour of anchor tag 
 }
 
-var featureLink = document.querySelector('a.feature.link');
-
-featureLink.addEventListener('click', featureLinkHandler);
+featureLink.addEventListener('click', featureLinkHandler); // Step 3
+//                                   \callback function/
