@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link rel="stylesheet" href="~/styles/site.css" />
+    <!-- The RenderSection() will grab a piece of the page noted by section name -->
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <main>
+        @*This is where the body of the page is inserted*@
+        @RenderBody()
+    </main>
+    <header><h1>Empty Razor WebApp</h1></header>
+    <footer>&copy; @DateTime.Today.Year - Dan Gilleland</footer>
+    <nav>
+
+    </nav>
+</body>
+</html>

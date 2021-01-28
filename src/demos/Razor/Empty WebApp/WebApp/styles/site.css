@@ -1,17 +1,14 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Raleway:wght@700&display=swap');
+
+body {
     display: grid;
     grid-gap: 10px;
-    grid-template-areas: "link head head head head" "link main main main main" "foot main main main main";
+    grid-template-areas: "head head head head head head head head" "link main main main main main main main" "foot main main main main main main main";
+    font-family: 'Noto Sans', sans-serif;
 }
 
-    body > header {
-        grid-area: head;
-        border: solid thin green;
-    }
-
-    body > footer {
-        grid-area: foot;
-        border: solid thin orange;
+    body > * {
+        padding: 10px;
     }
 
     body > main {
@@ -19,7 +16,77 @@
         border: solid thin blue;
     }
 
-    body > nav {
-        grid-area: link;
+    body > header {
+        grid-area: head;
+        border: solid thin green;
+        background: url('/Images/240.jpg');
+    }
+
+    body > footer {
+        grid-area: foot;
         border: solid thin red;
     }
+
+    body > nav {
+        grid-area: link;
+        border: solid thin orange;
+    }
+
+        /* Navigation Menu */
+        body > nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        body > nav .brand {
+            color: darkorange;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.2em;
+        }
+
+        body > nav > ul {
+            display: flex;
+            gap: 7px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            flex-direction: column;
+            flex-direction: column;
+            list-style: none;
+            background-color: darkgrey;
+            font-size: 1.2em;
+        }
+
+            body > nav > ul > li {
+                padding: 3px 8px;
+                background-color: slategray;
+                margin-right: 7px;
+                border-radius: 25px;
+            }
+
+    /* Other page styles */
+    body > header > h1 {
+        margin-top: 0;
+        margin-bottom: .64em;
+        font-size: 3em;
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: green;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body > header > h2 {
+        display: inline-block;
+        padding-left: 15px;
+        font-style: italic;
+    }
+
+footer .credits {
+    font-size: 8px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+}
