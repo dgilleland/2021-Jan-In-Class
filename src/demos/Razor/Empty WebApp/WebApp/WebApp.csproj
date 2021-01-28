@@ -95,6 +95,8 @@
   <ItemGroup>
     <Content Include="Index.cshtml" />
     <Content Include="Default.cshtml" />
+    <Content Include="About.cshtml" />
+    <Content Include="Contact.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,6 +105,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="_Layout.cshtml" />
+    <Content Include="_Menu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

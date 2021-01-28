@@ -2,10 +2,15 @@
     Page.Title = "Default Page"; // Sets the page title property to some friendly text
     Layout = "~/_Layout.cshtml"; // Identify our layout page
 }
+@section pageFooter {
+    <p>Current Server Time is @DateTime.Now.ToShortTimeString()</p>
+}
 
 @section head {
     <style type="text/css">
-        h1 { color: green; }
+        h1 {
+            color: green;
+        }
     </style>
 }
 <h1>Welcome to the @Page.Title</h1>

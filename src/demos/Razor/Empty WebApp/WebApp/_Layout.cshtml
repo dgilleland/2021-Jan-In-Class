@@ -12,9 +12,13 @@
         @RenderBody()
     </main>
     <header><h1>Empty Razor WebApp</h1></header>
-    <footer>&copy; @DateTime.Today.Year - Dan Gilleland</footer>
+    <footer>
+        @RenderSection("pageFooter")
+        <hr />
+        &copy; @DateTime.Today.Year - Dan Gilleland
+    </footer>
     <nav>
-
+        @RenderPage("~/_Menu.cshtml")
     </nav>
 </body>
 </html>
