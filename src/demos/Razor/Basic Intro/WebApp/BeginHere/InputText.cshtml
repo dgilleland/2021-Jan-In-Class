@@ -9,7 +9,7 @@
 @{
     string theName = Request["yourName"]; // will return null if empty
                                           // Request is "kind of" like an array, but much, much more....
-    if (IsPost)
+    if (this.IsPost)
     {
         if (string.IsNullOrEmpty(theName))
         {
