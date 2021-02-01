@@ -1,0 +1,15 @@
+﻿@using WebApp.BeginHere
+<div class="tabnav">
+    <div class="float-right">
+        <a class="tabnav-extra" href="https://primer.style/css/" target="_blank">Primer CSS for GitHub Styling</a>
+        <a class="tabnav-extra" href="https://primer.style/octicons/" target="_blank">Primer Octigons</a>
+    </div>
+    <nav class="tabnav-tabs" aria-label="UI Demos">
+        <a class="tabnav-tab" href="~/BeginHere/Default.cshtml" @(Page.Tab == UIControlDemos.INTRO ? "aria-current='page'" : string.Empty)>Overview</a>
+        <a class="tabnav-tab" href="~/BeginHere/InputText.cshtml" @(Page.Tab == UIControlDemos.TEXT ? "aria-current='page'" : string.Empty)>Text Input</a>
+        <a class="tabnav-tab" href="~/BeginHere/InputPassword.cshtml" @(Page.Tab == UIControlDemos.PASSWORD ? "aria-current='page'" : string.Empty)>Password</a>
+        <a class="tabnav-tab" href="~/BeginHere/InputRadio.cshtml" @(Page.Tab == UIControlDemos.RADIO ? "aria-current='page'" : string.Empty)>Radio Button</a>
+        <a class="tabnav-tab" href="~/BeginHere/InputCheckbox.cshtml" @(Page.Tab == UIControlDemos.CHECKBOX ? "aria-current='page'" : string.Empty)>Checkbox</a>
+        <a class="tabnav-tab" href="~/BeginHere/SelectOption.cshtml" @(Page.Tab == UIControlDemos.SELECT ? "aria-current='page'" : string.Empty)>Drop-Down</a>
+    </nav>
+</div>

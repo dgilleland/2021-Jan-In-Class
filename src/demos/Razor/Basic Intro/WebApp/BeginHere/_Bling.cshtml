@@ -1,0 +1,101 @@
+﻿<div class="bling">
+<span>I</span>
+<span>L</span>
+<input type="checkbox" id="switch" checked="checked" />
+<label id="lbl" for="switch"><i></i></label>
+<span>VE</span>
+<img src="https://blog.codepen.io/wp-content/uploads/2012/06/Button-Black-Large.png" alt="Codepen" />
+</div>
+<style type="text/css">
+    .bling {
+        --primary: #2280F2;
+        --secondary: #DAE2ED;
+        --base: #fff;
+        --bg: #fafafa;
+        height: 20vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: var(--primary);
+        background: var(--bg);
+        user-select: none;
+    }
+
+    span {
+        display: inline-block;
+        margin: 0 8px;
+        font-size: 3rem;
+    }
+
+    input {
+        display: none;
+    }
+
+    label#lbl {
+        --w: 90px;
+        --p: 2px;
+        --ease: cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
+        padding: var(--p);
+        width: var(--w);
+        border: 2px solid var(--secondary);
+        border-radius: var(--w);
+        cursor: pointer;
+        background: var(--base);
+    }
+
+        label#lbl:before, label#lbl:after {
+            position: absolute;
+            width: 50%;
+            top: calc(40% - .6em);
+            display: inline-block;
+            text-align: center;
+            font-size: 3em;
+            color: var(--secondary);
+            transition: all .6s var(--ease);
+            z-index: 10;
+        }
+
+        label#lbl:before {
+            content: 'I';
+            left: 0;
+            color: var(--base);
+        }
+
+        label#lbl:after {
+            content: 'O';
+            left: 54%;
+        }
+
+        label#lbl i {
+            --d: calc(var(--w)/2 - var(--p)/2);
+            position: relative;
+            display: block;
+            height: var(--d);
+            width: var(--d);
+            border: 1px solid rgba(0,0,0,.1);
+            border-radius: 100%;
+            background: var(--primary);
+            transition: all .6s var(--ease);
+        }
+
+    input[type="checkbox"]:checked + label#lbl i {
+        transform: translatex(var(--d));
+    }
+
+    input[type="checkbox"]:checked + label#lbl:before {
+        color: var(--secondary);
+    }
+
+    input[type="checkbox"]:checked + label#lbl:after {
+        color: var(--base);
+    }
+
+    img {
+        height: 50px;
+        margin-left: 10px;
+    }
+</style>

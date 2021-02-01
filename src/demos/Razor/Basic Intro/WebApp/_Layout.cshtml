@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@Page.Title</title>
+        @{ 
+            // Use string contants for unpkg resources to deal with the @ in the resource name
+            const string PRIMER_CSS = @"https://unpkg.com/@primer/css/dist/primer.css";
+            const string OCTICONS = @"https://unpkg.com/@primer/styled-octicons";
+        }
+        <link href="@PRIMER_CSS" rel="stylesheet" />
+        <script src="@OCTICONS"></script>
+        <script src="https://kit.fontawesome.com/7aa9f58d01.js" crossorigin="anonymous"></script>
+        <link href="~/styles/site.css" rel="stylesheet" />
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        <main class="p-responsive m-6">
+            @RenderBody()
+        </main>
+        <header class="p-responsive m-6">
+            @RenderSection("pageheader", required: false)
+        </header>
+        <footer class="border-top border-black-fade bg-blue-light pt-2 pb-4 p-responsive">
+            @RenderSection("pagefooter")
+            <hr />
+
+        </footer>
+        <nav class="Header">
+            @RenderPage("~/_Menu.cshtml")
+        </nav>
+    </body>
+</html>

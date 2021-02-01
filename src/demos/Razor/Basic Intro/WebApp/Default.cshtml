@@ -1,0 +1,40 @@
+﻿@{ 
+    // This is a C# block of code ("code-block")
+    Page.Title = "My Razor Page";
+    Layout = "~/_Layout.cshtml"; // the ~ means the root of the website
+}
+
+<div class="blankslate">
+    <img src="https://ghicons.github.com/assets/images/blue/png/Pull%20request.png" alt="" class="mb-3" />
+    <h3 class="mb-1">You haven't even begun to see what's possible &hellip;</h3>
+    <p>Welcome to the world of server-side processing. This is where the <span>Magic</span> really happens - where we do stuff that is complex and permanent.</p>
+    <p>Sure, there is front-end styling, with CSS and JavaScript bling (like below), but the power is in what's processed on the <b>Server-Side</b>!</p>
+    <button class="btn btn-primary my-3" type="button">I am a Button</button>
+    <p><button class="btn-link" type="button">&hellip; and so am i</button></p>
+    @RenderPage("~/BeginHere/_Bling.cshtml")
+</div>
+
+@section pagefooter {
+    <p>Today's date is @DateTime.Today.ToLongDateString().</p>
+}
+
+
+@section head {
+    <style>
+        /* This is how you do CSS comments (multi-line) */
+        .page-header {
+            background-color: #663399;
+            color: white;
+            padding: 5px 5px 10px 5px;
+        }
+    </style>
+}
+
+@section pageheader {
+    <h1>Welcome to @Page.Title</h1>
+}
+
+<script>
+    /* Javascript comments are a lot like C# comments */
+    //alert('Your computer is infected.');
+</script>
