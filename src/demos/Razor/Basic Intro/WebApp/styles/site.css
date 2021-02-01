@@ -1,0 +1,19 @@
+﻿body {
+    display: grid;
+}
+
+    body > nav {
+        grid-row: 1;
+    }
+
+    body > header {
+        grid-row: 2;
+    }
+
+    body > main {
+        grid-row: 3;
+    }
+
+    body > footer {
+        grid-row: 4;
+    }
