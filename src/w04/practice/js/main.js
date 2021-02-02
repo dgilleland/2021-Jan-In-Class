@@ -7,7 +7,10 @@
 // 5) Limit the use of "temporary" global variables =>> "inline" the variable featureLink
 
 const toggleImage = function(evt) {
-    let featureImage = document.querySelector('img.feature');
+    // Get the ID of the image tag from my <a data-img="..">
+    let imgId = evt.target.dataset.img;
+    // Use that ID to find my image tag
+    let featureImage = document.getElementById(imgId);
 
     // The if/else is part of what allows me to create the "logic" for toggling visibility
     if (featureImage.classList.contains('hidden')) {
@@ -21,5 +24,13 @@ const toggleImage = function(evt) {
     evt.preventDefault();
 }
 
-document.querySelector('a.feature') // formerly as the variable     featureLink
-        .addEventListener('click', toggleImage);
+const assignListener = function(el) {  // el is my parameter name for whatever HTMLElement is supplied
+    // Setup the listener function for the click event
+    el.addEventListener('click', toggleImage);
+}
+
+
+// Now, handling MORE <a class="feature"> elements!
+document.querySelectorAll('a.feature') // .querySelectorAll() will produce an Array of elements
+        .forEach(assignListener);      // loop through the array and call assignListener for each element
+
