@@ -87,6 +87,7 @@
     <Content Include="FormSamples\Default.html" />
     <Content Include="FormSamples\JobApplication.html" />
     <Content Include="FormSamples\StudentEnrollment.html" />
+    <Content Include="Images\Cloud.png" />
     <Content Include="styles\site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -123,9 +124,7 @@
     <Content Include="_Layout.cshtml" />
     <Content Include="_Menu.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
