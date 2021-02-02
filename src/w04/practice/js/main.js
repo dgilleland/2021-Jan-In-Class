@@ -8,8 +8,15 @@
 
 const toggleImage = function(evt) {
     let featureImage = document.querySelector('img.feature');
-    featureImage.src = evt.target.href;
-    featureImage.classList.remove('hidden');
+
+    // The if/else is part of what allows me to create the "logic" for toggling visibility
+    if (featureImage.classList.contains('hidden')) {
+        featureImage.src = evt.target.href;
+        featureImage.classList.remove('hidden');
+    } else {
+        featureImage.src = '';
+        featureImage.classList.add('hidden');
+    }
 
     evt.preventDefault();
 }
