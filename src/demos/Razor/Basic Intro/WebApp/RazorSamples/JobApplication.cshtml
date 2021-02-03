@@ -58,11 +58,26 @@
     <p>Please fill out the following form and click Submit to apply for the listed job(s).</p>
     @{
         // Grab whatever values are in the Request name/value collection
-        var name = Request["fullName"];
+        var name = Request["fullName"]; // Request.Form["fullName"]
         var email = Request["emailAddress"];
         var phone = Request["phoneNumber"];
         var workAmount = Request["fullOrPartTime"];
         var workArea = Request["jobIn"] ?? string.Empty;
+    }
+    @if (IsPost)
+    {
+        var submitAction = Request["submit"];
+        switch (submitAction)
+        {
+            case "Submit":
+                // Process the application
+                <div><b>Thank you for your application!</b></div>
+                break;
+            case "Clear Form":
+                // empty out form - Quick-n-Dirty
+                name = email = phone = workAmount = workArea = string.Empty;
+                break;
+        }
     }
     <form action="JobApplication.cshtml" method="post">
         <fieldset>
@@ -107,21 +122,6 @@
         <input type="reset" value="Reset" />
         <input name="submit" type="submit" value="Clear Form" />
     </form>
-    @if (IsPost)
-    {
-        var submitAction = Request["submit"];
-        switch (submitAction)
-        {
-            case "Submit":
-                // Process the application
-                <div><b>Thank you for your application!</b></div>
-                break;
-            case "Clear Form":
-                // empty out form
-                name = email = phone = workAmount = workArea = string.Empty;
-                break;
-        }
-    }
 
 </section>
 @section pagefooter {

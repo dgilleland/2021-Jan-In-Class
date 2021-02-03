@@ -45,45 +45,83 @@
     <h1>Contest Entry</h1>
     <p>Please fill out the following form to enter the contest. This contest is only available to residents in Western Canada.</p>
     @{
-
+        if (IsPost)
+        {
+            string first = Request.Form["firstName"];
+            string last = Request.Form["lastName"];
+            string email = Request.Form["emailAddress"];
+            // TODO: Get other data from the form
+            string agree = Request.Form["agreeToTerms"];
+            if (agree == "on")
+            {
+                <blockquote>
+                    Thanks @first @last for submitting your contest entry. You should be receiving a confirmation email at @email shortly.
+                </blockquote>
+            }
+            else
+            {
+                <blockquote>You must agree to the terms before your application will be accepted.</blockquote>
+            }
+        }
     }
-    <form action="ContestEntry.html">
+    <form method="post">
         <fieldset>
             <legend>Application Form</legend>
-            <label for="firstName">First Name</label>
-            <input name="firstName" type="text">
-            <label for="lastName">Last Name</label>
-            <input name="lastName" type="text">
-            <label for="streetAddress1">Street Address 1</label>
-            <input name="streetAddress1" type="text">
-            <label for="streetAddress2">Street Address 2</label>
-            <input name="streetAddress2" type="text">
-            <label for="city">City</label>
-            <input name="city" type="text">
-            <label for="province">Province/Territory</label>
-            <select name="province">
-                <option value="">(select a province)</option>
-                <option value="AB">AB</option>
-                <option value="BC">BC</option>
-                <option value="MB">MB</option>
-                <option value="NB">NB</option>
-                <option value="NS">NS</option>
-                <option value="NT">NT</option>
-                <option value="NU">NU</option>
-                <option value="ON">ON</option>
-                <option value="PE">PE</option>
-                <option value="QC">QC</option>
-                <option value="SK">SK</option>
-                <option value="YT">YT</option>
-            </select>
-            <label for="postalCode">Postal Code</label>
-            <input name="postalCode" type="text">
-            <label for="emailAddress">Email</label>
-            <input name="emailAddress" type="email">
+            <label for="firstName">
+                First Name
+                <input name="firstName" type="text">
+            </label>
+
+            <label for="lastName">
+                Last Name
+                <input name="lastName" type="text">
+            </label>
+
+            <label for="streetAddress1">
+                Street Address 1
+                <input name="streetAddress1" type="text">
+            </label>
+            <label for="streetAddress2">
+                Street Address 2
+                <input name="streetAddress2" type="text">
+            </label>
+            <label for="city">
+                City
+                <input name="city" type="text">
+            </label>
+            <label for="province">
+                Province/Territory
+                <select name="province">
+                    <option value="">(select a province)</option>
+                    <option value="AB">AB</option>
+                    <option value="BC">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="ON">ON</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YT">YT</option>
+                </select>
+            </label>
+            <label for="postalCode">
+                Postal Code
+                <input name="postalCode" type="text">
+            </label>
+            <label for="emailAddress">
+                Email
+                <input name="emailAddress" type="email">
+            </label>
+
             <p>
                 Note: You must agree to the contest terms in order to be entered.<br>
-                <input name="agreeToTerms" type="checkbox">
-                <label for="agreeToTerms">I agree to the terms of the contest.</label>
+                <label for="agreeToTerms">
+                    <input name="agreeToTerms" type="checkbox">
+                    I agree to the terms of the contest.
+                </label>
             </p>
         </fieldset>
         <input name="submit" type="submit" value="Submit">
