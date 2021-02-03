@@ -5,7 +5,7 @@
 // class from the p.feature.error element.  If the form is submitted correctly, then ensure
 // that the p.feature.error element is hidden.
 
-document.querySelector('.feature.frm ')
+document.querySelector('.feature.frm')
 .addEventListener('submit', function (evt) {
     let frm = evt.target;
     let tag = frm.elements.tags;
@@ -22,6 +22,10 @@ document.querySelector('.feature.frm ')
         error.innerHTML = "Blank input will not be processed.";
         error.classList.remove('hidden');
     }
-    evt.preventDefault(); 
+    evt.preventDefault(); // Prevent submitting the form
 });
 
+document.querySelector('button[type=button]') // selecting a <button type="button">
+        .addEventListener('click', function(evt) {
+            document.querySelector('p.feature.tags ').innerHTML = "";
+        })
