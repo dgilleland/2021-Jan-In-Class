@@ -1,4 +1,10 @@
 document.querySelector('form.login').addEventListener('submit', function (evt) {
+	// The evt.target is the <form> element
+	// A <form> HTML Element has a collection called elements
+	// which hold values that will be submitted from the form.
+	// Each <input> or other form element on the form
+	// will have the control's id attribute as a "property"
+	// (or, an index) on the elements collection.
 	var user = evt.target.elements.username;
 	var pass = evt.target.elements.password;
 	var valid = true;
