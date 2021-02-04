@@ -1,9 +1,8 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>AppDev 1 - HTML 5 Forms Demo</title>
-</head>
-<body>
+﻿@{ 
+    Page.Title = "About HTML 5 Forms";
+    Layout = "~/_Layout.cshtml";
+}
+
     <header>
         <h1>About HTML 5 Forms</h1>
         <nav>
@@ -145,7 +144,7 @@
             </li>
         </ul>
     </section>
-    <footer>
+    @section pagefooter {
         <div class="content-wrapper">
             <div class="float-left">
                 <p>Credits:</p>
@@ -158,6 +157,5 @@
                 <p>&copy; 2013 - DMIT</p>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+    }
+
