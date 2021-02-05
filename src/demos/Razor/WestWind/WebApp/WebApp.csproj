@@ -218,6 +218,7 @@
     <Content Include="_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
