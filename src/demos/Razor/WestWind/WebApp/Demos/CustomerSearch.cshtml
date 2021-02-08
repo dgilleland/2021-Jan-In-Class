@@ -1,0 +1,26 @@
+﻿@{
+    Page.Title = "Customer Search";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h1>Customer Search</h1>
+
+<div class="row">
+    <div class="col">
+        <form method="post">
+            <input type="text" name="partialName" placeholder="Partial Customer Name" />
+            <input type="submit" name="action" value="Find Customers" />
+        </form>
+    </div>
+    <div class="col">
+        <form method="post">
+            <label>
+                Matching Names:
+                <select name="selectedCustomer">
+                    <option value="">[Select a customer]</option>
+                </select>
+            </label>
+            <input type="submit" name="action" value="Show Orders" />
+        </form>
+    </div>
+</div>
