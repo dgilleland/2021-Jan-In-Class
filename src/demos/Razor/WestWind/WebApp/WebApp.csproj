@@ -234,6 +234,7 @@
     <Compile Include="Data\Shipper.cs" />
     <Compile Include="Data\Supplier.cs" />
     <Compile Include="Data\Territory.cs" />
+    <Compile Include="Data\WestWindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
