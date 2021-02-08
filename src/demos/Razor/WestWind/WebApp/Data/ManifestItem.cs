@@ -1,6 +1,6 @@
 namespace WebApp.Data
 {
-    public partial class ManifestItem
+    public class ManifestItem
     {
         public int ManifestItemID { get; set; }
         public int ShipmentID { get; set; }

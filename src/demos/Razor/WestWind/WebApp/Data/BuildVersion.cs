@@ -1,10 +1,10 @@
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema; // For the annotations
 
 namespace WebApp.Data
 {
-    [Table("BuildVersion")]
-    public partial class BuildVersion
+    [Table("BuildVersion")] // We can use an annotation on the class to indicate the database table name
+    public class BuildVersion
     {
         public int Id { get; set; }
         public int Major { get; set; }

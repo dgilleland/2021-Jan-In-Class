@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Data
 {
-    public partial class Customer
+    public class Customer
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string CustomerID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)] // Indicate how the Db handles the PK column
+        public string CustomerID { get; set; } // Primary Key - 
         public string CompanyName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
