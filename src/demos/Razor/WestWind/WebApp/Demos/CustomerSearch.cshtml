@@ -1,14 +1,38 @@
-﻿@{
+﻿@using WebApp.Data
+@{
     Page.Title = "Customer Search";
     Layout = "~/_Layout.cshtml";
 }
 
 <h1>Customer Search</h1>
 
+@{ 
+    // Grab any data from the form submission
+    string partialName = Request.Form["partialName"];
+    string formAction = Request.Form["action"];
+    // Page-Global variables
+    List<Customer> matchingCustomers = new List<Customer>(); // Initialize as an empty list
+    if(IsPost)
+    {
+        // Find Customers only if there is a partial name supplied
+        if(formAction == "Find Customers" && !string.IsNullOrWhiteSpace(partialName))
+        {
+            // Do a search of the database
+            using (var context = new WestWindContext()) // Using block will close the connection afterwards
+            {
+                // LINQ - Language INtegrated Query
+                var result = from row in context.Customers
+                             where row.CompanyName.Contains(partialName)
+                             select row;
+                matchingCustomers = result.ToList();
+            }
+        }
+    }
+}
 <div class="row">
     <div class="col">
         <form method="post">
-            <input type="text" name="partialName" placeholder="Partial Customer Name" />
+            <input type="text" name="partialName" placeholder="Partial Customer Name" value="@partialName" />
             <input type="submit" name="action" value="Find Customers" />
         </form>
     </div>
@@ -18,6 +42,10 @@
                 Matching Names:
                 <select name="selectedCustomer">
                     <option value="">[Select a customer]</option>
+                    @foreach(var company in matchingCustomers)
+                    {
+                        <option value="@company.CustomerID">@company.CompanyName</option>
+                    }
                 </select>
             </label>
             <input type="submit" name="action" value="Show Orders" />
