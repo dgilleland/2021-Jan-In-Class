@@ -2,7 +2,7 @@ using System;
 
 namespace WebApp.Data
 {
-    public partial class Payment
+    public class Payment
     {
         public int PaymentID { get; set; }
         public DateTime PaymentDate { get; set; }

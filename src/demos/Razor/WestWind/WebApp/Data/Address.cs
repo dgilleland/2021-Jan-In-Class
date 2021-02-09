@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Data
 {
-    public partial class Address
+    public class Address
     {
         public int AddressID { get; set; }
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApp.Data
 {
     [Table("BuildVersion")]
-    public partial class BuildVersion
+    public class BuildVersion
     {
         public int Id { get; set; }
         public int Major { get; set; }

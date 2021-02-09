@@ -1,6 +1,6 @@
 namespace WebApp.Data
 {
-    public partial class Supplier
+    public class Supplier
     {
         public int SupplierID { get; set; }
         public string CompanyName { get; set; }

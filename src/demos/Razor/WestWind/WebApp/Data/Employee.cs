@@ -2,7 +2,7 @@ using System;
 
 namespace WebApp.Data
 {
-    public partial class Employee
+    public class Employee
     {
         public int EmployeeID { get; set; }
         public string LastName { get; set; }

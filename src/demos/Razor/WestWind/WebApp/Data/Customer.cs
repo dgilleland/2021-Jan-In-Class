@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Data
 {
-    public partial class Customer
+    public class Customer
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string CustomerID { get; set; }
