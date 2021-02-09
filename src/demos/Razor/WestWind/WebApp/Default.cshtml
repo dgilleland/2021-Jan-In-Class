@@ -1,10 +1,20 @@
-﻿@{
+﻿@using WebApp.Data  @*Access to the classes in this namespace*@
+@{
     Page.Title = "WestWind";
     Layout = "~/_Layout.cshtml";
 }
 
-<h1>WestWind Wholesale</h1>
+<h1 class="jumbotron">WestWind Wholesale</h1>
 
-<div>
-
+<div class="row">
+    <div class="col">
+        @{ 
+            using(var context = new WestWindContext()) // Make sure that the connection is closed after
+            {
+                // Grab the first (and only) row from the BuildVersion table
+                BuildVersion current = context.BuildVersions.First();
+                <h2>WestWind Database, released on @current.ReleaseDate</h2>
+            }
+        }
+    </div>
 </div>
