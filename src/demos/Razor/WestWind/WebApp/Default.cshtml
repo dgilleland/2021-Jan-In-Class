@@ -1,10 +1,19 @@
-﻿@{
+﻿@using WebApp.Data
+@{
     Page.Title = "WestWind Wholesale";
     Layout = "~/_Layout.cshtml";
 }
 
 <h1 class="jumbotron">WestWind Wholesale</h1>
 
-<div>
-
+<div class="row">
+    <div class="col">
+        @{ 
+            using(var context = new WestWindContext())
+            {
+                BuildVersion dbVersion = context.BuildVersions.Single(); // Get the only row in the table
+                <h3>Database Version: @dbVersion.ToString()</h3>
+            }
+        }
+    </div>
 </div>
