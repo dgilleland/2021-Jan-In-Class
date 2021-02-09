@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Data
 {
-    [Table("BuildVersion")]
+    // ![](E95460FE0D25A912F00BC86BF6A3692C.png)
+    [Table("BuildVersion")] // An annotation to identify the name of the database table
     public class BuildVersion
     {
         public int Id { get; set; }
