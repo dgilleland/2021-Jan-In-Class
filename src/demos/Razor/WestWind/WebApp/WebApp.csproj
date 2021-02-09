@@ -128,6 +128,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Demos\CustomerSearch.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -223,6 +224,7 @@
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\Customer.cs" />
     <Compile Include="Data\Employee.cs" />
+    <Compile Include="Data\EmployeeTerritory.cs" />
     <Compile Include="Data\ManifestItem.cs" />
     <Compile Include="Data\Order.cs" />
     <Compile Include="Data\OrderDetail.cs" />
@@ -234,6 +236,7 @@
     <Compile Include="Data\Shipper.cs" />
     <Compile Include="Data\Supplier.cs" />
     <Compile Include="Data\Territory.cs" />
+    <Compile Include="Data\WestWindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
