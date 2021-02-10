@@ -10,6 +10,7 @@
     // Grab any data from the form submission
     string partialName = Request.Form["partialName"];
     string formAction = Request.Form["action"];
+    string errorMessage = string.Empty;
     // Page-Global variables
     List<Customer> matchingCustomers = new List<Customer>(); // Initialize as an empty list
     if(IsPost)
@@ -17,18 +18,32 @@
         // Find Customers only if there is a partial name supplied
         if(formAction == "Find Customers" && !string.IsNullOrWhiteSpace(partialName))
         {
-            // Do a search of the database
-            using (var context = new WestWindContext()) // Using block will close the connection afterwards
+            matchingCustomers = LoadCustomers(partialName);
+        }
+        if(formAction == "Show Orders")
+        {
+            // Find what customer the user selected from the drop-down
+            string customerId = Request.Form["selectedCustomer"];
+            if (string.IsNullOrWhiteSpace(partialName))
             {
-                // LINQ - Language INtegrated Query
-                var result = from row in context.Customers
-                             where row.CompanyName.Contains(partialName)
-                             select row;
-                matchingCustomers = result.ToList();
+                errorMessage = "Please search for a partial customer before clicking Show Orders";
+            }
+            else if (string.IsNullOrWhiteSpace(customerId))
+            {
+                errorMessage = "Please select a customer before clicking Show Orders";
+                matchingCustomers = LoadCustomers(partialName);
+            }
+            else
+            {
+                // Send that ID as part of a Query String to another page
+                Response.Redirect($"~/Demos/ViewCustomerOrders.cshtml?cid={customerId}");
             }
         }
     }
 }
+<div class="row">
+    <div class="col">@errorMessage</div>
+</div>
 <div class="row">
     <div class="col">
         <form method="post">
@@ -38,6 +53,7 @@
     </div>
     <div class="col">
         <form method="post">
+            <input type="hidden" name="partialName" value="@partialName" />
             <label>
                 Matching Names:
                 <select name="selectedCustomer">
@@ -52,3 +68,19 @@
         </form>
     </div>
 </div>
+
+@functions
+{
+    public List<Customer> LoadCustomers(string partialName)
+    {
+        // Do a search of the database
+        using (var context = new WestWindContext()) // Using block will close the connection afterwards
+        {
+            // LINQ - Language INtegrated Query
+            var result = from row in context.Customers
+                         where row.CompanyName.Contains(partialName)
+                         select row;
+            return result.ToList();
+        }
+    }
+}

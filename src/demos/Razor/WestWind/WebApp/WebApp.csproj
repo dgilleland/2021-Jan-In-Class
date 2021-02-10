@@ -129,6 +129,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Demos\CustomerSearch.cshtml" />
+    <Content Include="Demos\ViewCustomerOrders.cshtml" />
+    <Content Include="Demos\ManageSuppliers.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
