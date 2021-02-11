@@ -6,37 +6,52 @@
 
 <h1 class="jumbotron">Customer Search</h1>
 
-@{ 
+@{
     // TODO: Handle the POST requests (form submissions)
     // Grab any data from the form submission
     string partialName = Request.Form["partialName"];
     string formAction = Request.Form["action"];
+    string errorMessage = string.Empty;
     // Page-Global variable
     List<Customer> matchingCustomers = new List<Customer>(); // Initialize as an empty list
-    if(IsPost)
+    if (IsPost)
     {
         // Find Customers only if there is a partial name supplied
-        if(formAction == "Search Customers" && !string.IsNullOrWhiteSpace(partialName))
+        if (formAction == "Search Customers")
         {
-            // Do a search of the database
-            using (var context = new WestWindContext()) // Using block will close the connection afterwards
+            if (string.IsNullOrWhiteSpace(partialName))
             {
-                // LINQ - Language INtegrated Query
-                var result = from row in context.Customers
-                             where row.CompanyName.Contains(partialName)
-                             select row;
-                matchingCustomers = result.ToList();
+                errorMessage = "Enter at least one character for the partial name before doing a search.";
+            }
+            else
+            {
+                matchingCustomers = LoadCustomers(partialName);
             }
         }
-        if(formAction == "Show Orders")
+        if (formAction == "Show Orders")
         {
             // Find which customer the user selected from the drop-down
             string customerId = Request.Form["selectedCustomer"];
-            // Send that ID as part of a Query String to another page
-            Response.Redirect($"~/Demos/ViewCustomerOrders.cshtml?cid={customerId}");
+            if (string.IsNullOrWhiteSpace(partialName))
+            {
+                errorMessage = "Please search for a partial customer before clicking Show Orders";
+            }
+            else if (string.IsNullOrWhiteSpace(customerId))
+            {
+                errorMessage = "Please select a customer before clicking Show Orders";
+                matchingCustomers = LoadCustomers(partialName);
+            }
+            else
+            {
+                // Send that ID as part of a Query String to another page
+                Response.Redirect($"~/Demos/ViewCustomerOrders.cshtml?cid={customerId}");
+            }
         }
     }
 }
+<div class="row">
+    <div class="col">@errorMessage</div>
+</div>
 <div class="row">
     <div class="col">
         <form method="post">
@@ -46,11 +61,12 @@
     </div>
     <div class="col">
         <form method="post">
+            <input type="hidden" name="partialName" value="@partialName" />
             <label>
                 Matching Customers
                 <select name="selectedCustomer">
                     <option value="">[Select a customer]</option>
-                    @foreach(var company in matchingCustomers)
+                    @foreach (var company in matchingCustomers)
                     {
                         <option value="@company.CustomerID">@company.CompanyName</option>
                     }
@@ -60,3 +76,18 @@
         </form>
     </div>
 </div>
+@functions
+{
+    public List<Customer> LoadCustomers(string partialName)
+    {
+        // Do a search of the database
+        using (var context = new WestWindContext()) // Using block will close the connection afterwards
+        {
+            // LINQ - Language INtegrated Query
+            var result = from row in context.Customers
+                         where row.CompanyName.Contains(partialName)
+                         select row;
+            return result.ToList();
+        }
+    }
+}
