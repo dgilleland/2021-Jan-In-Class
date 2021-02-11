@@ -13,7 +13,7 @@
             {
                 // Grab the first (and only) row from the BuildVersion table
                 BuildVersion current = context.BuildVersions.First();
-                <h2>WestWind Database, released on @current.ReleaseDate</h2>
+                <h2>WestWind Database, @current.ToString()</h2>
             }
         }
     </div>

@@ -12,5 +12,10 @@ namespace WebApp.Data
         public int Minor { get; set; }
         public int Build { get; set; }
         public DateTime ReleaseDate { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Major}.{Minor}.{Build} (Released {ReleaseDate.ToLongDateString()})";
+        }
     }
 }
