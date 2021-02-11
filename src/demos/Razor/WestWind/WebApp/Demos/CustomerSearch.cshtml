@@ -8,12 +8,40 @@
 
 @{ 
     // TODO: Handle the POST requests (form submissions)
+    // Grab any data from the form submission
+    string partialName = Request.Form["partialName"];
+    string formAction = Request.Form["action"];
+    // Page-Global variable
+    List<Customer> matchingCustomers = new List<Customer>(); // Initialize as an empty list
+    if(IsPost)
+    {
+        // Find Customers only if there is a partial name supplied
+        if(formAction == "Search Customers" && !string.IsNullOrWhiteSpace(partialName))
+        {
+            // Do a search of the database
+            using (var context = new WestWindContext()) // Using block will close the connection afterwards
+            {
+                // LINQ - Language INtegrated Query
+                var result = from row in context.Customers
+                             where row.CompanyName.Contains(partialName)
+                             select row;
+                matchingCustomers = result.ToList();
+            }
+        }
+        if(formAction == "Show Orders")
+        {
+            // Find which customer the user selected from the drop-down
+            string customerId = Request.Form["selectedCustomer"];
+            // Send that ID as part of a Query String to another page
+            Response.Redirect($"~/Demos/ViewCustomerOrders.cshtml?cid={customerId}");
+        }
+    }
 }
 <div class="row">
     <div class="col">
         <form method="post">
-            <input type="text" name="partialName" placeholder="Partial Customer Name" />
-            <input type="button" name="action" value="Search Customers" />
+            <input type="text" name="partialName" placeholder="Partial Customer Name" value="@partialName" />
+            <input type="submit" name="action" value="Search Customers" />
         </form>
     </div>
     <div class="col">
@@ -22,9 +50,13 @@
                 Matching Customers
                 <select name="selectedCustomer">
                     <option value="">[Select a customer]</option>
+                    @foreach(var company in matchingCustomers)
+                    {
+                        <option value="@company.CustomerID">@company.CompanyName</option>
+                    }
                 </select>
             </label>
-            <input type="button" name="action" value="Show Orders" />
+            <input type="submit" name="action" value="Show Orders" />
         </form>
     </div>
 </div>

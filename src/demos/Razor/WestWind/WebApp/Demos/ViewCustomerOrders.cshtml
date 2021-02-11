@@ -1,0 +1,64 @@
+﻿@using WebApp.Data
+@{
+    Page.Title = "Customer Orders";
+    Layout = "~/_Layout.cshtml";
+    // Grab the customer ID from the query string
+    string customerId = Request.QueryString["cid"];
+
+    Customer customer = null;
+    using (var context = new WestWindContext()) // using will close the database connection after we get the data
+    {
+        // We can look up a single row (instance) from our database by using the .Find() method
+        // and sending in the Primary Key value for the customer we want to find.
+        customer = context.Customers.Find(customerId);
+        if(customer == null)
+        {
+            // If we don't get a customer back, we'll redirect to the CustomerSearch page
+            Response.Redirect("~/Demos/CustomerSearch.cshtml", true); // The "true" parameter says to stop processing and just send the redirect instruction to the browser.
+        }
+    }
+}
+
+<h1>Customer Orders</h1>
+
+<div class="row">
+    @*Bootstrap uses a 12-column grid layout for each row*@
+    <div class="col-md-3">
+        <h2>@customer.CompanyName</h2>
+        <p>@customer.ContactName - @customer.Phone</p>
+    </div>
+    <div class="col-md-9">
+        <h2>Orders</h2>
+        @{ 
+            using (var context = new WestWindContext())
+            {
+                // I'll use a C# LINQ statement to query the database for the orders belong to a specific customer
+                var result = from purchase in context.Orders
+                             where purchase.CustomerID == customer.CustomerID // or == customerId
+                             orderby purchase.OrderDate descending // Most recent purchases first
+                             select purchase;
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Ship Name</th>
+                            <th>Shipped</th>
+                            <th>Freight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var order in result)
+                        {
+                            <tr>
+                                <td>@(order.OrderDate.Value.ToShortDateString())</td>
+                                <td>@order.ShipName</td>
+                                <td><input type="checkbox" checked="@order.Shipped" /></td>
+                                <td>@order.Freight.Value.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+</div>

@@ -11,7 +11,7 @@ namespace WebApp.Data
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
         public string ContactEmail { get; set; }
-        public string AddressID { get; set; }
+        public int AddressID { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
     }

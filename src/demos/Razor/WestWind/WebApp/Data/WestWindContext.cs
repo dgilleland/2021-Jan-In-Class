@@ -17,5 +17,6 @@ namespace WebApp.Data
         public DbSet<BuildVersion> BuildVersions { get; set; }
         public DbSet<Customer> Customers { get; set; }
         // TODO: Homework! - Add properties for all the remaining tables/entities in your database/Entity classes
+        public DbSet<Order> Orders { get; set; }
     }
 }
