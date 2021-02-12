@@ -44,6 +44,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th>Edit</th>
                             <th>Order Date</th>
                             <th>Ship Name</th>
                             <th>Shipped</th>
@@ -54,6 +55,13 @@
                         @foreach(var order in result)
                         {
                             <tr>
+                                <td>
+                                    <form method="post" action="~/Demos/ManageOrders.cshtml">
+                                        <input type="hidden" name="customerId" value="@customerId" />
+                                        <input type="hidden" name="orderId" value="@order.OrderID" />
+                                        <button type="submit" name="action" value="EditOrder">Edit</button>
+                                    </form>
+                                </td>
                                 <td>@(order.OrderDate.Value.ToShortDateString())</td>
                                 <td>@order.ShipName</td>
                                 <td><input type="checkbox" checked="@order.Shipped" /></td>

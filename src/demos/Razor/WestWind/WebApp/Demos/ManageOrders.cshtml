@@ -1,64 +1,181 @@
-﻿@{
+﻿@using WebApp.Data
+@{
     Page.Title = "Manage Customer Order";
     Layout = "~/_Layout.cshtml";
 
-    string action = Request.Form[nameof(action)];
+    // Grabbing information POSTed to this page
+    // Notice that ALL of the information submitted by the browser is sent as a string
+    // - HTTP/HTTPS - Always sends data as text
+    string action = Request.Form[nameof(action)];  // Notice that I'm starting to avoid "magic strings"
+    string customerId = Request.Form[nameof(customerId)];
+    string orderId = Request.Form[nameof(orderId)];
+    string repId = Request.Form[nameof(repId)];
+    string orderDate = Request.Form[nameof(orderDate)];
+    string requiredBy = Request.Form[nameof(requiredBy)];
+    string paymentDueBy = Request.Form[nameof(paymentDueBy)];
+    string freight = Request.Form[nameof(freight)];
+    string shipped = Request.Form[nameof(shipped)];
+    string shipName = Request.Form[nameof(shipName)];
+    string shipTo = Request.Form[nameof(shipTo)];
+    string comments = Request.Form[nameof(comments)];
 
+    if (IsPost)
+    {
+        switch (action)
+        {
+            case "PrepOrder": // This is a new order where we know who the customer is
+                break;
+            case "EditOrder": // This is an existing order where we know the customer & order id
+                {
+                    using(var context = new WestWindContext())
+                    {
+                        Order existing = context.Orders.Find(int.Parse(orderId));
+                        if(existing != null)
+                        {
+                            // set all the variables to the contents of the Order object
+                            repId = existing.SalesRepID.ToString();
+                            orderDate = existing.OrderDate.Value.ToString("yyyy-MM-dd");
+                            requiredBy = existing.RequiredDate.Value.ToString("yyyy-MM-dd");
+                            paymentDueBy = existing.PaymentDueDate.Value.ToString("yyyy-MM-dd");
+                            freight = existing.Freight.ToString();
+                            shipped = existing.Shipped ? "on" : string.Empty; // ternary expression
+                            shipTo = existing.ShipAddressID.ToString();
+                            comments = existing.Comments;
+
+                        }
+                    }
+                    break;
+                }
+            case "AddOrder": // This is where we want to add the order to the database
+                break;
+            case "UpdateOrder": // We want to change the data in the database
+                break;
+            case "DeleteOrder": // We want to remove the data in the database
+                break;
+            case "ClearForm": // We want to remove the data in the database
+                 customerId = string.Empty;
+                 orderId = string.Empty;
+                 repId = string.Empty;
+                 orderDate = string.Empty;
+                 requiredBy = string.Empty;
+                 paymentDueBy = string.Empty;
+                 freight = string.Empty;
+                 shipped = string.Empty;
+                 shipName = string.Empty;
+                 shipTo = string.Empty;
+                 comments = string.Empty;
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 <h1>Manage Orders</h1>
 
-<div class="row">
-    <div class="col">
-        <label>
-            Order ID:
-            <input type="text" value="" disabled />
-        </label>
-        <label>
-            Sales Rep:
-            <select name="" value="">
-                <option value="">[Select a ]</option>
-            </select>
-        </label>
-        <label>
-            Customer:
-            <select name="" value="">
-                <option value="">[Select a ]</option>
-            </select>
-        </label>
-        <label>
-            Order Date:
-            <input type="" value="" />
-        </label>
-        <label>
-            Required By:
-            <input type="" value="" />
-        </label>
-        <label>
-            Payment Due Date:
-            <input type="" value="" />
-        </label>
-        <label>
-            Freight:
-            <input type="" value="" />
-        </label>
-        <label>
-            Shipped:
-            <input type="" value="" />
-        </label>
-        <label>
-            Ship Name:
-            <input type="" value="" />
-        </label>
-        <label>
-            Ship Address:
-            <select name="" value="">
-                <option value="">[Select a ]</option>
-            </select>
-        </label>
-        <label>
-            Comments:
-            <textarea name=""></textarea>
-        </label>
+<form method="post">
+    <div class="row">
+        <div class="col">
+            <button type="submit" name="@nameof(action)" value="AddOrder" class="btn btn-primary">Add Order</button>
+            <button type="submit" name="@nameof(action)" value="UpdateOrder" class="btn btn-success">Update Order</button>
+            <button type="submit" name="@nameof(action)" value="DeleteOrder" class="btn btn-danger">Delete Order</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+            <button type="submit" name="@nameof(action)" value="ClearForm" class="btn btn-warning">Clear Form</button>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>
+                Order ID:
+                <input type="text" name="@nameof(orderId)" value="@orderId" disabled class="form-control" />
+            </label>
+            <br /><br />
+            <label>
+                Sales Rep:
+                @using (var context = new WestWindContext())
+                {
+                    var employees = context.Employees.ToList();
+                    <select name="@nameof(repId)" class="form-control">
+                        <option value="">[Select a ]</option>
+                        @foreach (var person in employees)
+                        {
+                            <option value="@person.EmployeeID" selected="@(person.EmployeeID.ToString() == repId)">@person.FirstName @person.LastName</option>
+                        }
+                    </select>
+                }
+            </label>
+            <br /><br />
+            <label>
+                Customer:
+                @using (var context = new WestWindContext())
+                {
+                    // Get a list of the customers for my drop-down
+                    var customers = context.Customers.ToList(); // Get all the customers as a List<Customer>
+
+                    <select name="@nameof(customerId)" class="form-control">
+                        <option value="0">[Select a Customer]</option>
+                        @foreach (var company in customers)
+                        {
+                            // Add in an entry in the drop-down for each customer
+                            <option value="@company.CustomerID" selected="@(customerId == company.CustomerID)">@company.CompanyName</option>
+                        }
+                    </select>
+                }
+            </label>
+            <br /><br />
+            <label>
+                Order Date:
+                <input type="date" name="@nameof(orderDate)" value="@(orderDate)" class="form-control" />
+            </label>
+            <br /><br />
+            <label>
+                Required By:
+                <input type="date" name="@nameof(requiredBy)" value="@(requiredBy)" class="form-control" />
+            </label>
+            <br /><br />
+            <label>
+                Payment Due Date:
+                <input type="date" name="@nameof(paymentDueBy)" value="@(paymentDueBy)" class="form-control" />
+            </label>
+        </div>
+
+        <div class="col-md-6">
+            <label>
+                Freight:
+                <input type="text" name="@nameof(freight)" value="@freight" class="form-control" />
+            </label>
+            <br /><br />
+            <label>
+                Shipped:
+                <input type="checkbox" name="@nameof(shipped)" checked="@(shipped == "on")" /> Yes
+            </label>
+            <br /><br />
+            <label>
+                Ship Name:
+                <input type="text" name="@nameof(shipName)" value="@shipName" class="form-control" />
+            </label>
+            <br /><br />
+            <label>
+                Ship Address:
+                <select name="@nameof(shipTo)" class="form-control">
+                    <option value="">[Select a ]</option>
+                    @using (var context = new WestWindContext())
+                    {
+                        var places = context.Addresses.ToList();
+                        foreach (var address in places)
+                        {
+                            <option value="@address.AddressID" selected="@(address.AddressID.ToString() == shipTo)">
+                                @address.Street - @address.City
+                            </option>
+                        }
+                    }
+                </select>
+            </label>
+            <br /><br />
+            <label>
+                Comments:
+                <textarea name="@nameof(comments)" rows="4" class="form-control">@comments</textarea>
+            </label>
+        </div>
+    </div>
+</form>
