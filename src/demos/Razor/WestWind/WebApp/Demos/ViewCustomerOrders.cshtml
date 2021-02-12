@@ -26,6 +26,10 @@
     <div class="col-md-3">
         <h2>@customer.CompanyName</h2>
         <p>@customer.ContactName - @customer.Phone</p>
+        <form method="post" action="~/Demos/ManageOrders.cshtml">
+            <input type="hidden" name="customerId" value="@customerId" />
+            <button type="submit" name="action" value="PrepOrder">Add Order</button>
+        </form>
     </div>
     <div class="col-md-9">
         <h2>Orders</h2>

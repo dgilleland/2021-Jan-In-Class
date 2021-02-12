@@ -17,6 +17,20 @@ namespace WebApp.Data
         public DbSet<BuildVersion> BuildVersions { get; set; }
         public DbSet<Customer> Customers { get; set; }
         // TODO: Homework! - Add properties for all the remaining tables/entities in your database/Entity classes
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeTerritory> EmployeeTerritories { get; set; }
+        public DbSet<ManifestItem> ManifestItems { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<PaymentType> PaymentTypes { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<Shipment> Shipments { get; set; }
+        public DbSet<Shipper> Shippers { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Territory> Territories { get; set; }
     }
 }
