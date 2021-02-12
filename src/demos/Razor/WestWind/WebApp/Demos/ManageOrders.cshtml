@@ -1,0 +1,64 @@
+﻿@{
+    Page.Title = "Manage Customer Order";
+    Layout = "~/_Layout.cshtml";
+
+    string action = Request.Form[nameof(action)];
+
+}
+
+<h1>Manage Orders</h1>
+
+<div class="row">
+    <div class="col">
+        <label>
+            Order ID:
+            <input type="text" value="" disabled />
+        </label>
+        <label>
+            Sales Rep:
+            <select name="" value="">
+                <option value="">[Select a ]</option>
+            </select>
+        </label>
+        <label>
+            Customer:
+            <select name="" value="">
+                <option value="">[Select a ]</option>
+            </select>
+        </label>
+        <label>
+            Order Date:
+            <input type="" value="" />
+        </label>
+        <label>
+            Required By:
+            <input type="" value="" />
+        </label>
+        <label>
+            Payment Due Date:
+            <input type="" value="" />
+        </label>
+        <label>
+            Freight:
+            <input type="" value="" />
+        </label>
+        <label>
+            Shipped:
+            <input type="" value="" />
+        </label>
+        <label>
+            Ship Name:
+            <input type="" value="" />
+        </label>
+        <label>
+            Ship Address:
+            <select name="" value="">
+                <option value="">[Select a ]</option>
+            </select>
+        </label>
+        <label>
+            Comments:
+            <textarea name=""></textarea>
+        </label>
+    </div>
+</div> 
