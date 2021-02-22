@@ -52,19 +52,31 @@
                     using (var context = new WestWindContext()) // Use (open) our virtual database (that connects to our physical database)
                     {
                         // 1) Create an instance of our Entity class
-                        Order newOrder = new Order // filling in the data through an initializer list
+                        Order newOrder = new Order();
+                        newOrder.CustomerID = customerId;
+                        int temp;
+                        if (int.TryParse(repId, out temp)) // The .TryParse of the built-in datatypes are for attempting to convert a string to some non-string value
                         {
-                            SalesRepID = int.Parse(repId),
-                            OrderDate = DateTime.Parse(orderDate),
-                            CustomerID = customerId,
-                            RequiredDate = DateTime.Parse(requiredBy),
-                            PaymentDueDate = DateTime.Parse(paymentDueBy),
-                            Freight = decimal.Parse(freight),
-                            Shipped = (shipped == "on"),
-                            ShipAddressID = int.Parse(shipTo),
-                            ShipName = shipName,
-                            Comments = comments
-                        };
+                            newOrder.SalesRepID = temp;
+                        }
+                        DateTime tempDate;
+                        if (DateTime.TryParse(orderDate, out tempDate))
+                        {
+                            newOrder.OrderDate = tempDate;
+                        }
+                        if (DateTime.TryParse(requiredBy, out tempDate))
+                        {
+                            newOrder.RequiredDate = tempDate;
+                        }
+                        if (DateTime.TryParse(paymentDueBy, out tempDate))
+                        {
+                            newOrder.PaymentDueDate = tempDate;
+                        }
+                        newOrder.Freight = decimal.Parse(freight);
+                        newOrder.Shipped = (shipped == "on");
+                        newOrder.ShipAddressID = int.Parse(shipTo);
+                        newOrder.ShipName = shipName;
+                        newOrder.Comments = comments;
                         // 2) Add that to our "virtual" table
                         context.Orders.Add(newOrder);
                         // 3) Save the changes - (actually putting the data into the database)
