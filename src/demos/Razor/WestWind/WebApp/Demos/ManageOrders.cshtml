@@ -3,6 +3,7 @@
     Page.Title = "Manage Customer Order";
     Layout = "~/_Layout.cshtml";
 
+    string message = string.Empty;
     // Grabbing information POSTed to this page
     // Noticed that ALL of the information submitted by the browser is sent as a string
     // - HTTP/HTTPS - Always sends data a test
@@ -45,6 +46,34 @@
                 }
                 break;
             case "AddOrder": // Add the order to the database
+                // We need to use our virtual database class - our DbContext
+                {
+                    // Ensure that after we "open" the connection to the database, it (the connection) is properly closed
+                    using (var context = new WestWindContext()) // Use (open) our virtual database (that connects to our physical database)
+                    {
+                        // 1) Create an instance of our Entity class
+                        Order newOrder = new Order // filling in the data through an initializer list
+                        {
+                            SalesRepID = int.Parse(repId),
+                            OrderDate = DateTime.Parse(orderDate),
+                            CustomerID = customerId,
+                            RequiredDate = DateTime.Parse(requiredBy),
+                            PaymentDueDate = DateTime.Parse(paymentDueBy),
+                            Freight = decimal.Parse(freight),
+                            Shipped = (shipped == "on"),
+                            ShipAddressID = int.Parse(shipTo),
+                            ShipName = shipName,
+                            Comments = comments
+                        };
+                        // 2) Add that to our "virtual" table
+                        context.Orders.Add(newOrder);
+                        // 3) Save the changes - (actually putting the data into the database)
+                        context.SaveChanges();
+                        // 4) Giving some feedback regarding the success
+                        orderId = newOrder.OrderID.ToString();
+                        message = $"The order was saved with order id {orderId}.";
+                    }
+                }
                 break;
             case "UpdateOrder": // Change the data in the database
                 break;
@@ -78,6 +107,8 @@
             <button type="submit" name="@nameof(action)" value="DeleteOrder" class="btn btn-danger">Delete Order</button>
             <button type="submit" name="@nameof(action)" value="ClearForm" class="btn btn-warning">Clear Form</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
+            <br />
+            @message;
         </div>
     </div>
     <div class="row">
