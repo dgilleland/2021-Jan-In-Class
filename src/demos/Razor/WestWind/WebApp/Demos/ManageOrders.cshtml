@@ -67,38 +67,7 @@
                     using (var context = new WestWindContext()) // Use (open) our virtual database (that connects to our physical database)
                     {
                         // 1) Create an instance of our Entity class
-                        Order newOrder = new Order();
-                        newOrder.CustomerID = customerId;
-                        int temp;
-                        if (int.TryParse(repId, out temp)) // The .TryParse of the built-in datatypes are for attempting to convert a string to some non-string value
-                        {
-                            newOrder.SalesRepID = temp;
-                        }
-                        DateTime tempDate;
-                        if (DateTime.TryParse(orderDate, out tempDate))
-                        {
-                            newOrder.OrderDate = tempDate;
-                        }
-                        if (DateTime.TryParse(requiredBy, out tempDate))
-                        {
-                            newOrder.RequiredDate = tempDate;
-                        }
-                        if (DateTime.TryParse(paymentDueBy, out tempDate))
-                        {
-                            newOrder.PaymentDueDate = tempDate;
-                        }
-                        decimal tempMoney;
-                        if (decimal.TryParse(freight, out tempMoney))
-                        {
-                            newOrder.Freight = tempMoney;
-                        }
-                        newOrder.Shipped = (shipped == "on");
-                        if (int.TryParse(shipTo, out temp))
-                        {
-                            newOrder.ShipAddressID = temp;
-                        }
-                        newOrder.ShipName = shipName;
-                        newOrder.Comments = comments;
+                        Order newOrder = BuildOrder(customerId, repId, orderDate, requiredBy, paymentDueBy, freight, shipped, shipTo, shipName, comments);
                         // 2) Add that to our "virtual" table
                         context.Orders.Add(newOrder);
                         // 3) Save the changes - (actually putting the data into the database)
@@ -244,3 +213,44 @@
         </div>
     </div>
 </form>
+
+@functions {
+    // straight methods for processing information - should have NO "display" aspects
+    public Order BuildOrder(string customerId, string repId, string orderDate, string requiredBy, string paymentDueBy, string freight, string shipped, string shipTo, string shipName, string comments)
+    {
+        Order newOrder = new Order();
+        newOrder.CustomerID = customerId;
+        int temp;
+        if (int.TryParse(repId, out temp)) // The .TryParse of the built-in datatypes are for attempting to convert a string to some non-string value
+        {
+            newOrder.SalesRepID = temp;
+        }
+        DateTime tempDate;
+        if (DateTime.TryParse(orderDate, out tempDate))
+        {
+            newOrder.OrderDate = tempDate;
+        }
+        if (DateTime.TryParse(requiredBy, out tempDate))
+        {
+            newOrder.RequiredDate = tempDate;
+        }
+        if (DateTime.TryParse(paymentDueBy, out tempDate))
+        {
+            newOrder.PaymentDueDate = tempDate;
+        }
+        decimal tempMoney;
+        if (decimal.TryParse(freight, out tempMoney))
+        {
+            newOrder.Freight = tempMoney;
+        }
+        newOrder.Shipped = (shipped == "on");
+        if (int.TryParse(shipTo, out temp))
+        {
+            newOrder.ShipAddressID = temp;
+        }
+        newOrder.ShipName = shipName;
+        newOrder.Comments = comments;
+
+        return newOrder;
+    }
+}
