@@ -107,6 +107,17 @@
                         context.SaveChanges();
                         // 4) Give feedback to the user
                         message = $"The order {orderId} has been removed.";
+                        customerId = string.Empty;
+                        orderId = string.Empty;
+                        repId = string.Empty;
+                        orderDate = string.Empty;
+                        requiredBy = string.Empty;
+                        paymentDueBy = string.Empty;
+                        freight = string.Empty;
+                        shipped = string.Empty;
+                        shipName = string.Empty;
+                        shipTo = string.Empty;
+                        comments = string.Empty;
                     }
                 }
                 break;
@@ -133,9 +144,13 @@
 <form method="post">
     <div class="row">
         <div class="col">
-            <button type="submit" name="@nameof(action)" value="AddOrder" class="btn btn-primary">Add Order</button>
-            <button type="submit" name="@nameof(action)" value="UpdateOrder" class="btn btn-success">Update Order</button>
-            <button type="submit" name="@nameof(action)" value="DeleteOrder" class="btn btn-danger">Delete Order</button>
+            @{ 
+                int throwaway;
+                bool hasOrderId = int.TryParse(orderId, out throwaway);
+            }
+            <button type="submit" name="@nameof(action)" value="AddOrder" disabled="@hasOrderId" class="btn btn-primary">Add Order</button>
+            <button type="submit" name="@nameof(action)" value="UpdateOrder" disabled="@(!hasOrderId)" class="btn btn-success">Update Order</button>
+            <button type="submit" name="@nameof(action)" value="DeleteOrder" disabled="@(!hasOrderId)" class="btn btn-danger">Delete Order</button>
             <button type="submit" name="@nameof(action)" value="ClearForm" class="btn btn-warning">Clear Form</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
             <br />
@@ -146,7 +161,9 @@
         <div class="col">
             <label>
                 Order ID:
-                <input type="text" name="@nameof(orderId)" value="@orderId" disabled class="form-control" />
+                <!-- Note to self: Disabled input elements will not post their data to the web server when submitting the form -->
+                <input type="text" value="@orderId" disabled class="form-control" />
+                <input type="hidden" name="@nameof(orderId)" value="@orderId" />
             </label>
             <br /><br />
             <label>
