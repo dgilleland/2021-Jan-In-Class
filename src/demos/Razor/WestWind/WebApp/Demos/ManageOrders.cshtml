@@ -96,6 +96,19 @@
                 }
                 break;
             case "DeleteOrder": // Remove the data from the database
+                {
+                    using(var context = new WestWindContext())
+                    {
+                        // 1) Find the order
+                        Order existing = context.Orders.Find(int.Parse(orderId));
+                        // 2) Remove the order
+                        context.Orders.Remove(existing);
+                        // 3) Save the changes
+                        context.SaveChanges();
+                        // 4) Give feedback to the user
+                        message = $"The order {orderId} has been removed.";
+                    }
+                }
                 break;
             case "ClearForm": // We want to "empty" all the input fields
                 customerId = string.Empty;
