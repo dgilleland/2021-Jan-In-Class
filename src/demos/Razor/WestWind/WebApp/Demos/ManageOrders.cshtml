@@ -33,11 +33,26 @@
                         Order existing = context.Orders.Find(int.Parse(orderId));
                         {
                             // set all the variables to the contents of the Order object
-                            repId = existing.SalesRepID.ToString();
-                            orderDate = existing.OrderDate.Value.ToString("yyyy-MM-dd");
-                            requiredBy = existing.RequiredDate.Value.ToString("yyyy-MM-dd");
-                            paymentDueBy = existing.PaymentDueDate.Value.ToString("yyyy-MM-dd");
-                            freight = existing.Freight.ToString();
+                            if (existing.SalesRepID.HasValue)
+                            {
+                                repId = existing.SalesRepID.ToString();
+                            }
+                            if (existing.OrderDate.HasValue)
+                            {
+                                orderDate = existing.OrderDate.Value.ToString("yyyy-MM-dd");
+                            }
+                            if (existing.RequiredDate.HasValue)
+                            {
+                                requiredBy = existing.RequiredDate.Value.ToString("yyyy-MM-dd");
+                            }
+                            if (existing.PaymentDueDate.HasValue)
+                            {
+                                paymentDueBy = existing.PaymentDueDate.Value.ToString("yyyy-MM-dd");
+                            }
+                            if (existing.Freight.HasValue)
+                            {
+                                freight = existing.Freight.ToString();
+                            }
                             shipped = existing.Shipped ? "on" : string.Empty; // ternary expression
                             shipTo = existing.ShipAddressID.ToString();
                             comments = existing.Comments;
@@ -72,9 +87,16 @@
                         {
                             newOrder.PaymentDueDate = tempDate;
                         }
-                        newOrder.Freight = decimal.Parse(freight);
+                        decimal tempMoney;
+                        if (decimal.TryParse(freight, out tempMoney))
+                        {
+                            newOrder.Freight = tempMoney;
+                        }
                         newOrder.Shipped = (shipped == "on");
-                        newOrder.ShipAddressID = int.Parse(shipTo);
+                        if (int.TryParse(shipTo, out temp))
+                        {
+                            newOrder.ShipAddressID = temp;
+                        }
                         newOrder.ShipName = shipName;
                         newOrder.Comments = comments;
                         // 2) Add that to our "virtual" table
@@ -120,7 +142,7 @@
             <button type="submit" name="@nameof(action)" value="ClearForm" class="btn btn-warning">Clear Form</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
             <br />
-            @message;
+            @message
         </div>
     </div>
     <div class="row">
@@ -155,7 +177,7 @@
                     // Get a list of the customers for my drop-down
                     List<Customer> customers = context.Customers.ToList(); // Get all the customers as a List<Customer>
 
-                    <select name="@nameof(customerId)" class="form-control">
+                    <select name="@nameof(customerId)" class="form-control" required>
                         <option value="">[Select a Customer]</option>
                         @foreach (var company in customers)
                         {

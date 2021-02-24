@@ -62,10 +62,19 @@
                                         <button type="submit" name="action" value="EditOrder">Edit</button>
                                     </form>
                                 </td>
-                                <td>@(order.OrderDate.Value.ToShortDateString())</td>
+                                <td>
+                                    @(order.OrderDate.HasValue ? 
+                                      order.OrderDate.Value.ToShortDateString() : 
+                                      string.Empty)
+                                </td>
                                 <td>@order.ShipName</td>
                                 <td><input type="checkbox" checked="@order.Shipped" /></td>
-                                <td>@order.Freight.Value.ToString("C")</td>
+                                <td>
+                                    @if (order.Freight.HasValue)
+                                    {
+                                        <text>@order.Freight.Value.ToString("C")</text>
+                                    }
+                                </td>
                             </tr>
                         }
                     </tbody>
