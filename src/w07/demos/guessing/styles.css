@@ -1,0 +1,25 @@
+.gameboard {
+    display: grid;
+    gap: 5px;
+    grid-auto-flow: column;
+}
+
+.gameboard > div {
+    border-radius: 5px;
+    background-color: seagreen;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    font-weight: bold;
+    color: seagreen;
+    font-size: 18px;
+}
+
+.gameboard > div.reveal {
+    color: seashell;
+}
+
+.words {
+    display: none;
+}
+
