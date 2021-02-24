@@ -79,6 +79,21 @@
                 }
                 break;
             case "UpdateOrder": // Change the data in the database
+                {
+                    using (var context = new WestWindContext())
+                    {
+                        // 1) Create an instance of our Entity class from the user input
+                        Order existingOrder = BuildOrder(customerId, repId, orderDate, requiredBy, paymentDueBy, freight, shipped, shipTo, shipName, comments);
+                        existingOrder.OrderID = int.Parse(orderId);
+                        // 2) Associate the Order object with my DbContext as an entry that should already be in the database
+                        var existing = context.Entry(existingOrder);
+                        existing.State = System.Data.Entity.EntityState.Modified; // This object's data has changed
+                        // 3) Save the changes
+                        context.SaveChanges();
+                        // 4 Give some feedback to the user
+                        message = $"The order {orderId} has been updated.";
+                    }
+                }
                 break;
             case "DeleteOrder": // Remove the data from the database
                 break;
