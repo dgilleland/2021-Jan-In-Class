@@ -87,6 +87,8 @@ namespace DemoApp
         {
             // i.e.:    3/4
             string[] parts = text.Split('/'); // should give me two parts
+            if (parts.Length != 2)
+                throw new FormatException("The text is not in the correct format for a Fraction");
             int n = int.Parse(parts[0]);
             int d = int.Parse(parts[1]);
             return new Fraction(n, d);
