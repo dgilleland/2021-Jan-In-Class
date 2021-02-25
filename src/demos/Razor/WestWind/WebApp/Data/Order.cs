@@ -14,7 +14,7 @@ namespace WebApp.Data
         // I create one property for each column in my database table.
         // Pay attention to the data type and the spelling.
         public int OrderID { get; set; }
-        public int SalesRepID { get; set; }
+        public int? SalesRepID { get; set; }
         public string CustomerID { get; set; }
         public DateTime? OrderDate { get; set; }
         public DateTime? RequiredDate { get; set; }
