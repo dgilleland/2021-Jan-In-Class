@@ -1,4 +1,9 @@
 let selectedWord = 0; // Start with the first word
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const CORRECT = "✓";
+const WRONG = "X";
+
+let availableLetters = LETTERS;
 
 const nextWord = function() {
     let wordList = document.querySelectorAll('li');
@@ -15,6 +20,7 @@ const nextWord = function() {
 const fillGameboard = function() {
     // Grab the next word in the list
     let theWord = nextWord();
+
     // Replace the .innerHTML of the div.gameboard with a bunch of divs, one for each letter in the word we grabbed.
     let newGameboard = "";
     console.log(theWord.length);
@@ -26,17 +32,43 @@ const fillGameboard = function() {
 
 // Add an event handler for the textbox input.
 const guessWord = function(evt) {
+    let out = document.getElementById('feedback');
     // grab the text in the textbox
-    let letter = evt.target.value;
-    // loop through the divs in the gameboard to find matches and apply a css class to the div
-    let letterDivs = document.querySelectorAll('.gameboard div');
-    for(var index = 0; index < letterDivs.length; index++)
-    {
-        // check for a match
-        if(letter.toUpperCase() === letterDivs[index].innerText.toUpperCase()) {
-            letterDivs[index].classList.add('reveal');
+    let letter = evt.target.value.toUpperCase();
+    // Check if the letter has been guessed before
+    if (availableLetters.indexOf(letter) >= 0) {
+        // play the game
+        // loop through the divs in the gameboard to find matches and apply a css class to the div
+        let letterDivs = document.querySelectorAll('.gameboard div');
+        let isMatch = false; // start out pessimistic
+        for(var index = 0; index < letterDivs.length; index++)
+        {
+            // check for a match
+            if(letter === letterDivs[index].innerText.toUpperCase()) {
+                letterDivs[index].classList.add('reveal');
+                isMatch = true;
+            }
         }
-    }
+        // Give feedback if they have made a correct guess
+        if (isMatch) {
+                out.innerText = CORRECT;
+                out.classList.remove('wrong');
+                out.classList.add('correct');
+        } else {
+            out.innerText = WRONG;
+            out.classList.add('wrong');
+            out.classList.remove('correct');
+        }
+        // Remove the guessed letter from the available letters
+        availableLetters = availableLetters.replace(letter, '');
+    } else {
+        // they already used up that letter
+        out.innerHTML = '<i>You already guessed that letter</i>';
+        out.classList.remove('wrong');
+        out.classList.remove('correct');
+}
+    // Clear the textbox
+    evt.target.value = "";
 }
 
 // Hook up the event handler to the change event.
