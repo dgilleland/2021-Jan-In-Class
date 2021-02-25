@@ -36,9 +36,18 @@
                         {
                             // set all the variables to the contents of the Order object
                             repId = existing.SalesRepID.ToString();
-                            orderDate = existing.OrderDate.Value.ToString("yyyy-MM-dd");
-                            requiredBy = existing.RequiredDate.Value.ToString("yyyy-MM-dd");
-                            paymentDueBy = existing.PaymentDueDate.Value.ToString("yyyy-MM-dd");
+                            if (existing.OrderDate.HasValue)
+                            {
+                                orderDate = existing.OrderDate.Value.ToString("yyyy-MM-dd");
+                            }
+                            if (existing.RequiredDate.HasValue)
+                            {
+                                requiredBy = existing.RequiredDate.Value.ToString("yyyy-MM-dd");
+                            }
+                            if (existing.PaymentDueDate.HasValue)
+                            {
+                                paymentDueBy = existing.PaymentDueDate.Value.ToString("yyyy-MM-dd");
+                            }
                             freight = existing.Freight.ToString();
                             shipped = existing.Shipped ? "on" : string.Empty; // ternary expression
                             shipTo = existing.ShipAddressID.ToString();

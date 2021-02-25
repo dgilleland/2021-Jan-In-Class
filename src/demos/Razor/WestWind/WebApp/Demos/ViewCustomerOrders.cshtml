@@ -11,7 +11,7 @@
         // We can look up a single row (instance) from our database by using the .Find() method
         // and sending in the Primary Key value for the customer we want to find.
         customer = context.Customers.Find(customerId);
-        if(customer == null)
+        if (customer == null)
         {
             // If we don't get a customer back, we'll redirect to the CustomerSearch page
             Response.Redirect("~/Demos/CustomerSearch.cshtml", true); // The "true" parameter says to stop processing and just send the redirect instruction to the browser.
@@ -33,7 +33,7 @@
     </div>
     <div class="col-md-9">
         <h2>Orders</h2>
-        @{ 
+        @{
             using (var context = new WestWindContext())
             {
                 // I'll use a C# LINQ statement to query the database for the orders belong to a specific customer
@@ -52,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var order in result)
+                        @foreach (var order in result)
                         {
                             <tr>
                                 <td>
@@ -62,10 +62,17 @@
                                         <button type="submit" name="action" value="EditOrder">Edit</button>
                                     </form>
                                 </td>
-                                <td>@(order.OrderDate.Value.ToShortDateString())</td>
+                                <td>
+                                    @if (order.OrderDate.HasValue)
+                                    {
+                                        <text>@(order.OrderDate.Value.ToShortDateString())</text>
+                                    }
+                                </td>
                                 <td>@order.ShipName</td>
                                 <td><input type="checkbox" checked="@order.Shipped" /></td>
-                                <td>@order.Freight.Value.ToString("C")</td>
+                                <td>
+                                    @(order.Freight.HasValue ? order.Freight.Value.ToString("C") : string.Empty)
+                                </td>
                             </tr>
                         }
                     </tbody>
