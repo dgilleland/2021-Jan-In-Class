@@ -17,6 +17,8 @@ namespace DemoApp
 
         private void Run()
         {
+            string programName = nameof(DemoApp);
+            WriteLine($"Welcome to {programName}. You are in the {nameof(Program.Run)} method.");
             Write("Enter a number: ");
             string userInput = ReadLine();
             double total = 0;
