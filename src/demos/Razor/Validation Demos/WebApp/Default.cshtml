@@ -1,6 +1,272 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
     Page.Title = "Home Page";
+
+    string razorFeedback = string.Empty;
 }
 
 <h1 class="jumbotron">Validation Demos</h1>
+
+<div class="row">
+    <div class="col">
+        <form method="post">
+            <h2>
+                HTML 5 Validation Constraints &ndash; Client-Side
+                <small>
+                    <input type="submit" name="html5Form" class="btn btn-primary btn-sm" value="Submit" />
+                </small>
+            </h2>
+            <p>All the samples below use HTML 5 client-side-only validtion.</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>HTML 5 Attributes</th>
+                        <th>Sample</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            @if (IsPost && !string.IsNullOrEmpty(Request.Form["html5Form"]))
+                            {
+                                // Do you own independant client-side validation
+                                bool validInput = true;
+                                if (validInput)
+                                {
+                                    razorFeedback = "Looks good to me!";
+                                }
+                                else
+                                {
+                                    razorFeedback = "I haven't finished validating this, but I'm guessing you had problems?..";
+                                }
+                            }
+                            @razorFeedback
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>String Length</td>
+                        <td>
+                            <input type="text"
+                                   placeholder="Your full name"
+                                   class="form-control"
+                                   minlength="5"
+                                   maxlength="25"
+                                   required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Range</td>
+                        <td>
+                            <input type="number"
+                                   placeholder="Enter a number in the right range"
+                                   class="form-control"
+                                   min="10"
+                                   max="80"
+                                   required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Decimal</td>
+                        <td>
+                            <input type="number"
+                                   placeholder="What's the value of PI?"
+                                   class="form-control"
+                                   step="0.0001"
+                                   required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Integer</td>
+                        <td>
+                            <input type="number"
+                                   placeholder="Whole numbers only..."
+                                   class="form-control"
+                                   min="1"
+                                   required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>
+                            <input type="url"
+                                   placeholder="Website URL"
+                                   class="form-control"
+                                   required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            <input type="email"
+                                   placeholder="Your Email"
+                                   class="form-control"
+                                   required />
+                            <input type="email"
+                                   placeholder="Confirm your email"
+                                   class="form-control"
+                                   required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DateTime</td>
+                        <td>
+                            <input type="date"
+                                   placeholder="Today's Date"
+                                   class="form-control"
+                                   required />
+                            <input type="time"
+                                   placeholder="Current Time"
+                                   class="form-control"
+                                   required />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="col">
+        <form method="post">
+            <h2>
+                Razor (v3) Validation &ndash; Server-side
+                <small>
+                    <input type="submit" name="razorForm" class="btn btn-primary btn-sm" value="Submit" />
+                </small>
+            </h2>
+            <p><b>This is a legacy approach! <i class="fa fa-frown-o" aria-hidden="true"></i></b> All the samples below use simple <code>&lt;input type="text"&gt;</code> input elements.</p>
+            @{
+                string razorString = Request.Form[nameof(razorString)]; // Request.Form["razorString"]
+                string razorRange = Request.Form[nameof(razorRange)];
+                string razorDecimal = Request.Form[nameof(razorDecimal)];
+                string razorInteger = Request.Form[nameof(razorInteger)];
+                string razorUrl = Request.Form[nameof(razorUrl)];
+                string razorEmail = Request.Form[nameof(razorEmail)];
+                string razorConfirmEmail = Request.Form[nameof(razorConfirmEmail)];
+                string razorDateTime = Request.Form[nameof(razorDateTime)];
+
+                // The following lines server to SET UP the validation for all the input controls
+                Validation.Add(nameof(razorString),
+                    Validator.Required("You must enter a name"), // Required input can be included along with other constraints
+                    Validator.StringLength(25, 5, "At least 5 characters, but no more than 25"));
+                Validation.RequireField(nameof(razorRange), "A range value is required"); // Required input can be identified apart from other constraints
+                Validation.Add(nameof(razorRange),
+                    Validator.Range(10, 80, "Must be between 10 and 80 (inclusive)"));
+                // Required input can be identified by listing multiple inputs
+                Validation.RequireFields(nameof(razorDecimal), nameof(razorInteger), nameof(razorUrl), nameof(razorDateTime),
+                    nameof(razorEmail), nameof(razorConfirmEmail));
+                Validation.Add(nameof(razorDecimal),
+                    Validator.Decimal("I expect this value to be a decimal number"));
+                Validation.Add(nameof(razorInteger),
+                    Validator.Integer("I expect this value to be a whole number"));
+                Validation.Add(nameof(razorUrl),
+                    Validator.Url("I expect this value to be an url"));
+                Validation.Add(nameof(razorEmail),
+                    Validator.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$",
+                        "Invalid format for an email address"));
+                Validation.Add(nameof(razorConfirmEmail),
+                    Validator.EqualsTo(nameof(razorEmail), "Your email inputs must match"));
+                Validation.Add(nameof(razorDateTime),
+                    Validator.DateTime("I expect this value to be a date (with or without time)"));
+            }
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Validation Helper</th>
+                        <th>Sample Form Control</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            @if (IsPost && !string.IsNullOrEmpty(Request.Form["razorForm"]))
+                            {
+                                if (Validation.IsValid()) // Checking of the validation on the server side
+                                {
+                                    razorFeedback = "Looks good to me!";
+                                }
+                                else
+                                {
+                                    // I can display the error messages as a group with the
+                                    // @Html.ValidationSummary()
+                                    <text>
+                                        @Html.ValidationSummary("There were problems validating your input:")
+                                    </text>
+                                }
+                            }
+                            @razorFeedback
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>String Length</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorString)"
+                                   placeholder="Your full name" />
+                            @Html.ValidationMessage(nameof(razorString))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Range</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorRange)"
+                                   placeholder="Enter a number in the right range" />
+                            @Html.ValidationMessage(nameof(razorRange))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Decimal</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorDecimal)"
+                                   placeholder="What's the value of PI?" />
+                            @Html.ValidationMessage(nameof(razorDecimal))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Integer</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorInteger)"
+                                   placeholder="Whole numbers only..." />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Url</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorUrl)"
+                                   placeholder="Website URL" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorEmail)"
+                                   placeholder="Your Email" />
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorConfirmEmail)"
+                                   placeholder="Confirm your email" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DateTime</td>
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   name="@nameof(razorDateTime)"
+                                   placeholder="Today's date" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
