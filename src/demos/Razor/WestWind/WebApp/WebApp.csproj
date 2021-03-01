@@ -222,23 +222,6 @@
     <Content Include="_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Address.cs" />
-    <Compile Include="Data\BuildVersion.cs" />
-    <Compile Include="Data\Category.cs" />
-    <Compile Include="Data\Customer.cs" />
-    <Compile Include="Data\Employee.cs" />
-    <Compile Include="Data\ManifestItem.cs" />
-    <Compile Include="Data\Order.cs" />
-    <Compile Include="Data\OrderDetail.cs" />
-    <Compile Include="Data\Payment.cs" />
-    <Compile Include="Data\PaymentType.cs" />
-    <Compile Include="Data\Product.cs" />
-    <Compile Include="Data\Region.cs" />
-    <Compile Include="Data\Shipment.cs" />
-    <Compile Include="Data\Shipper.cs" />
-    <Compile Include="Data\Supplier.cs" />
-    <Compile Include="Data\Territory.cs" />
-    <Compile Include="Data\WestWindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +242,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WestWindSystem\WestWindSystem.csproj">
+      <Project>{51f7dcbc-ffab-46b1-af55-7722411dffdd}</Project>
+      <Name>WestWindSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
