@@ -23,6 +23,8 @@
     // I'll do my exception handling around the entire POST processing of the form's input
     try
     {
+        // Instance of my BLL class
+        var controller = new WestWindSystem.BLL.OrdersController();
         // Inside the try block, I will run this code until I get an Exception (until things "blow up")
         if (IsPost)
         {
@@ -32,10 +34,11 @@
                     break;
                 case "EditOrder": // This is an existing order where we know the customer & order id
                     {
-                        using (var context = new WestWindContext())
-                        {
-                            Order existing = context.Orders.Find(int.Parse(orderId));
+
+                        { // TODO: Clean up curly braces
+                            Order existing = controller.GetOrder(int.Parse(orderId));
                             {
+                                // I am "unpacking" the Order object into separate variables for use in the form
                                 // set all the variables to the contents of the Order object
                                 if (existing.SalesRepID.HasValue)
                                 {
@@ -65,65 +68,37 @@
                     }
                     break;
                 case "AddOrder": // Add the order to the database
-                                 // We need to use our virtual database class - our DbContext
-                    {
-                        // Ensure that after we "open" the connection to the database, it (the connection) is properly closed
-                        using (var context = new WestWindContext()) // Use (open) our virtual database (that connects to our physical database)
-                        {
-                            // 1) Create an instance of our Entity class
-                            Order newOrder = BuildOrder(customerId, repId, orderDate, requiredBy, paymentDueBy, freight, shipped, shipTo, shipName, comments);
-                            // 2) Add that to our "virtual" table
-                            context.Orders.Add(newOrder);
-                            // 3) Save the changes - (actually putting the data into the database)
-                            context.SaveChanges();
-                            // 4) Giving some feedback regarding the success
-                            orderId = newOrder.OrderID.ToString();
-                            message = $"The order was saved with order id {orderId}.";
-                        }
-                    }
+                                 // 1) Create an instance of our Entity class
+                    Order newOrder = BuildOrder(customerId, repId, orderDate, requiredBy, paymentDueBy, freight, shipped, shipTo, shipName, comments);
+
+                    // 4) Giving some feedback regarding the success
+                    orderId = controller.AddOrder(newOrder).ToString();
+                    message = $"The order was saved with order id {orderId}.";
                     break;
                 case "UpdateOrder": // Change the data in the database
-                    {
-                        using (var context = new WestWindContext())
-                        {
-                            // 1) Create an instance of our Entity class from the user input
-                            Order existingOrder = BuildOrder(customerId, repId, orderDate, requiredBy, paymentDueBy, freight, shipped, shipTo, shipName, comments);
-                            existingOrder.OrderID = int.Parse(orderId);
-                            // 2) Associate the Order object with my DbContext as an entry that should already be in the database
-                            var existing = context.Entry(existingOrder);
-                            existing.State = System.Data.Entity.EntityState.Modified; // This object's data has changed
-                                                                                      // 3) Save the changes
-                            context.SaveChanges();
-                            // 4 Give some feedback to the user
-                            message = $"The order {orderId} has been updated.";
-                        }
-                    }
+                    // 1) Create an instance of our Entity class from the user input
+                    Order existingOrder = BuildOrder(customerId, repId, orderDate, requiredBy, paymentDueBy, freight, shipped, shipTo, shipName, comments);
+                    existingOrder.OrderID = int.Parse(orderId);
+
+                    controller.UpdateOrder(existingOrder);
+                    // 4 Give some feedback to the user
+                    message = $"The order {orderId} has been updated.";
                     break;
                 case "DeleteOrder": // Remove the data from the database
-                    {
-                        using (var context = new WestWindContext())
-                        {
-                            // 1) Find the order
-                            Order existing = context.Orders.Find(int.Parse(orderId));
-                            // 2) Remove the order
-                            context.Orders.Remove(existing);
-                            // 3) Save the changes
-                            context.SaveChanges();
-                            // 4) Give feedback to the user
-                            message = $"The order {orderId} has been removed.";
-                            customerId = string.Empty;
-                            orderId = string.Empty;
-                            repId = string.Empty;
-                            orderDate = string.Empty;
-                            requiredBy = string.Empty;
-                            paymentDueBy = string.Empty;
-                            freight = string.Empty;
-                            shipped = string.Empty;
-                            shipName = string.Empty;
-                            shipTo = string.Empty;
-                            comments = string.Empty;
-                        }
-                    }
+                    controller.DeleteOrder(int.Parse(orderId));
+                    // 4) Give feedback to the user
+                    message = $"The order {orderId} has been removed.";
+                    customerId = string.Empty;
+                    orderId = string.Empty;
+                    repId = string.Empty;
+                    orderDate = string.Empty;
+                    requiredBy = string.Empty;
+                    paymentDueBy = string.Empty;
+                    freight = string.Empty;
+                    shipped = string.Empty;
+                    shipName = string.Empty;
+                    shipTo = string.Empty;
+                    comments = string.Empty;
                     break;
                 case "ClearForm": // We want to "empty" all the input fields
                     customerId = string.Empty;
