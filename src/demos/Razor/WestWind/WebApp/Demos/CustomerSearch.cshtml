@@ -16,6 +16,7 @@
     List<Customer> matchingCustomers = new List<Customer>(); // Initialize as an empty list
     if (IsPost)
     {
+        var controller = new WestWindSystem.BLL.CustomerController();
         // Find Customers only if there is a partial name supplied
         if (formAction == "Search Customers")
         {
@@ -25,7 +26,7 @@
             }
             else
             {
-                matchingCustomers = LoadCustomers(partialName);
+                matchingCustomers = controller.LoadCustomers(partialName);
             }
         }
         if (formAction == "Show Orders")
@@ -39,7 +40,7 @@
             else if (string.IsNullOrWhiteSpace(customerId))
             {
                 errorMessage = "Please select a customer before clicking Show Orders";
-                matchingCustomers = LoadCustomers(partialName);
+                matchingCustomers = controller.LoadCustomers(partialName);
             }
             else
             {
@@ -76,18 +77,3 @@
         </form>
     </div>
 </div>
-@functions
-{
-    public List<Customer> LoadCustomers(string partialName)
-    {
-        // Do a search of the database
-        using (var context = new WestWindContext()) // Using block will close the connection afterwards
-        {
-            // LINQ - Language INtegrated Query
-            var result = from row in context.Customers
-                         where row.CompanyName.Contains(partialName)
-                         select row;
-            return result.ToList();
-        }
-    }
-}

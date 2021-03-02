@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{F2505A21-DCB3-4545-B25B-31B16C4B4750}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestWindSystem", "WestWindSystem\WestWindSystem.csproj", "{DEB6C469-A8E5-4A28-93AE-FDF586451065}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F2505A21-DCB3-4545-B25B-31B16C4B4750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2505A21-DCB3-4545-B25B-31B16C4B4750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2505A21-DCB3-4545-B25B-31B16C4B4750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEB6C469-A8E5-4A28-93AE-FDF586451065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB6C469-A8E5-4A28-93AE-FDF586451065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB6C469-A8E5-4A28-93AE-FDF586451065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB6C469-A8E5-4A28-93AE-FDF586451065}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

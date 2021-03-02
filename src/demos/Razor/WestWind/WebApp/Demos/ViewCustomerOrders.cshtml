@@ -1,21 +1,18 @@
 ﻿@using WebApp.Data
+@using WestWindSystem.BLL
 @{
     Page.Title = "Customer Orders";
     Layout = "~/_Layout.cshtml";
     // Grab the customer ID from the query string
     string customerId = Request.QueryString["cid"];
 
-    Customer customer = null;
-    using (var context = new WestWindContext()) // using will close the database connection after we get the data
+    var controller = new CustomerController();
+    Customer customer = controller.GetCustomer(customerId);
+
+    if (customer == null)
     {
-        // We can look up a single row (instance) from our database by using the .Find() method
-        // and sending in the Primary Key value for the customer we want to find.
-        customer = context.Customers.Find(customerId);
-        if (customer == null)
-        {
-            // If we don't get a customer back, we'll redirect to the CustomerSearch page
-            Response.Redirect("~/Demos/CustomerSearch.cshtml", true); // The "true" parameter says to stop processing and just send the redirect instruction to the browser.
-        }
+        // If we don't get a customer back, we'll redirect to the CustomerSearch page
+        Response.Redirect("~/Demos/CustomerSearch.cshtml", true); // The "true" parameter says to stop processing and just send the redirect instruction to the browser.
     }
 }
 
