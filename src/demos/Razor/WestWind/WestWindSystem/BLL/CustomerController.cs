@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApp.Data; // Namespace for the Customer & WestWindContext
+using WestWindSystem.Entities; // Namespace for the Customer
+using WestWindSystem.DAL;      // Namespace for the WestWindContext
 
 namespace WestWindSystem.BLL
 {

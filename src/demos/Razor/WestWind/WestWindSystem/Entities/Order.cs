@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     // For practical purposes, since I'm using Entity Framework, I want to follow certain
     // "conventions" that will fit with the default "mapping" that EF uses to associate

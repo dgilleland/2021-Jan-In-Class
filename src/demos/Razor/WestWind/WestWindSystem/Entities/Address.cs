@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     public class Address // Addresses
     {

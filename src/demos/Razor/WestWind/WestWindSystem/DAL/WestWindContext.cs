@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using WestWindSystem.Entities;
 
-namespace WebApp.Data
+namespace WestWindSystem.DAL
 {
     // This class will represent my database as whole. I'm going to use Entity Framework to do all the
     // "Heavy Lifting" for communicating to the database.

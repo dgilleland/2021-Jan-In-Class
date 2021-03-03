@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema; // For the annotations
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     [Table("BuildVersion")] // We can use an annotation on the class to indicate the database table name
     public class BuildVersion

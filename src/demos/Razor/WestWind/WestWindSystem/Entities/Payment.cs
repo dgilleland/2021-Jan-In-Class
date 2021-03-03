@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     // ![](0E5086FF7A3E2D2D930F567B0F037D8A.png)
     public class Payment
