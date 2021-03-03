@@ -35,38 +35,52 @@ const guessWord = function(evt) {
     let out = document.getElementById('feedback');
     // grab the text in the textbox
     let letter = evt.target.value.toUpperCase();
-    // Check if the letter has been guessed before
-    if (availableLetters.indexOf(letter) >= 0) {
-        // play the game
-        // loop through the divs in the gameboard to find matches and apply a css class to the div
-        let letterDivs = document.querySelectorAll('.gameboard div');
-        let isMatch = false; // start out pessimistic
-        for(var index = 0; index < letterDivs.length; index++)
-        {
-            // check for a match
-            if(letter === letterDivs[index].innerText.toUpperCase()) {
-                letterDivs[index].classList.add('reveal');
-                isMatch = true;
-            }
-        }
-        // Give feedback if they have made a correct guess
-        if (isMatch) {
-                out.innerText = CORRECT;
+    if(letter.length == 1) {
+        // Check if it is a valid input (part of the LETTERS constant)
+        if(LETTERS.indexOf(letter) >= 0) {
+            // Check if the letter has been guessed before
+            if (availableLetters.indexOf(letter) >= 0) {
+                // play the game
+                // loop through the divs in the gameboard to find matches and apply a css class to the div
+                let letterDivs = document.querySelectorAll('.gameboard div');
+                let isMatch = false; // start out pessimistic
+                for(var index = 0; index < letterDivs.length; index++)
+                {
+                    // check for a match
+                    if(letter === letterDivs[index].innerText.toUpperCase()) {
+                        letterDivs[index].classList.add('reveal');
+                        isMatch = true;
+                    }
+                }
+                // Give feedback if they have made a correct guess
+                if (isMatch) {
+                        out.innerText = CORRECT;
+                        out.classList.remove('wrong');
+                        out.classList.add('correct');
+                } else {
+                    out.innerText = WRONG;
+                    out.classList.add('wrong');
+                    out.classList.remove('correct');
+                }
+                // Remove the guessed letter from the available letters
+                availableLetters = availableLetters.replace(letter, '');
+            } else {
+                // they already used up that letter
+                out.innerHTML = '<i>You already guessed that letter</i>';
                 out.classList.remove('wrong');
-                out.classList.add('correct');
+                out.classList.remove('correct');
+            }
         } else {
-            out.innerText = WRONG;
-            out.classList.add('wrong');
+            out.innerHTML = '<u>Only enter letters of the alphabet - not numbers or symbols</u>';
+            out.classList.remove('wrong');
             out.classList.remove('correct');
         }
-        // Remove the guessed letter from the available letters
-        availableLetters = availableLetters.replace(letter, '');
     } else {
-        // they already used up that letter
-        out.innerHTML = '<i>You already guessed that letter</i>';
-        out.classList.remove('wrong');
-        out.classList.remove('correct');
-}
+        // Tell the user to input only a single character.
+        out.innerHTML = '<b>Enter only a single character for your guess</b>';
+        out.classList.remove('wrong');     // remove red font color
+        out.classList.remove('correct');   // remove green font color
+    }
     // Clear the textbox
     evt.target.value = "";
 }
