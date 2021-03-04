@@ -177,10 +177,10 @@
             <br /><br />
             <label>
                 Customer:
-                @using (var context = new WestWindContext())
-                {
+                @{
+                    var custController = new WestWindSystem.BLL.CustomerController();
                     // Get a list of the customers for my drop-down
-                    var customers = context.Customers.ToList(); // Get all the customers as a List<Customer>
+                    var customers = custController.ListCustomers(); // Get all the customers as a List<Customer>
 
                     <select name="@nameof(customerId)" class="form-control" required>
                         <option value="">[Select a Customer]</option>
