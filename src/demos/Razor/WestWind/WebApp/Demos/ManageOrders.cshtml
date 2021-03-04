@@ -162,9 +162,9 @@
             <br /><br />
             <label>
                 Sales Rep:
-                @using (var context = new WestWindContext())
-                {
-                    var employees = context.Employees.ToList();
+                @{
+                    var empController = new WestWindSystem.BLL.EmployeesController();
+                    var employees = empController.ListEmployees();
                     <select name="@nameof(repId)" class="form-control">
                         <option value="">[Select a ]</option>
                         @foreach (var person in employees)
