@@ -31,13 +31,8 @@
     <div class="col-md-9">
         <h2>Orders</h2>
         @{
-            using (var context = new WestWindContext())
-            {
-                // I'll use a C# LINQ statement to query the database for the orders belong to a specific customer
-                var result = from purchase in context.Orders
-                             where purchase.CustomerID == customer.CustomerID // or == customerId
-                             orderby purchase.OrderDate descending // Most recent purchases first
-                             select purchase;
+            var ordersController = new OrdersController();
+            var result = ordersController.GetCustomerOrders(customerId);
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -74,7 +69,6 @@
                         }
                     </tbody>
                 </table>
-            }
         }
     </div>
 </div>
