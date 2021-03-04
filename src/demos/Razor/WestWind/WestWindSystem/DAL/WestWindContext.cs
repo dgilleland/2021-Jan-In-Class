@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity; // Contains our DbContext class
 using System.Linq;
 using System.Web;
+using WestWindSystem.Entities;
 
-namespace WebApp.Data
+namespace WestWindSystem.DAL
 {
     public class WestWindContext : DbContext
     {

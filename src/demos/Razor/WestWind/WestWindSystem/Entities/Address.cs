@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema; // ColumnAttribute is member of the Schema
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     // ![](3862A08B12A39F1707AAF17E5D8AA0B8.png)
     public class Address // Table Addresses

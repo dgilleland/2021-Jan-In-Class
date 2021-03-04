@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApp.Data; // My namespace for DAL/Entity classes
+using WestWindSystem.Entities; // My namespace for DAL/Entity classes
+using WestWindSystem.DAL;
 
 namespace WestWindSystem.BLL
 {

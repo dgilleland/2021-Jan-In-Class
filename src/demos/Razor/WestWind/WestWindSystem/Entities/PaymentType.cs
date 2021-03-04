@@ -1,4 +1,4 @@
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     public class PaymentType
     {

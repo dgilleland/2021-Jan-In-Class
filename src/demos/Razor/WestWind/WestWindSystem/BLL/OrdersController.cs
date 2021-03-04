@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApp.Data;
+using WestWindSystem.Entities;
+using WestWindSystem.DAL;
 
 namespace WestWindSystem.BLL
 {

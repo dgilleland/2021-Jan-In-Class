@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     // ![](BE0B1BF22D77A0551161BF09E219B433.png)
     public class EmployeeTerritory

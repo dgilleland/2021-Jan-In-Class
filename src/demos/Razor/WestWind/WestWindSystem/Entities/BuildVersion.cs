@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApp.Data
+namespace WestWindSystem.Entities
 {
     // ![](E95460FE0D25A912F00BC86BF6A3692C.png)
     [Table("BuildVersion")] // An annotation to identify the name of the database table
