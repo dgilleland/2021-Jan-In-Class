@@ -58,5 +58,18 @@ namespace WestWindSystem.BLL
                 context.SaveChanges();
             }
         }
+
+        public void DeleteOrder(int orderId)
+        {
+            using (var context = new WestWindContext())
+            {
+                // 1) Find the order
+                Order existingOrder = context.Orders.Find(orderId); // This will grab the order from the db
+                // 2) Mark that order for deletion
+                context.Orders.Remove(existingOrder);
+                // 3) Save the changes to the database
+                context.SaveChanges();
+            }
+        }
     }
 }
