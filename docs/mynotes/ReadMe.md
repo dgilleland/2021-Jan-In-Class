@@ -20,6 +20,8 @@
 
 [http://www.thedoghousediaries.com/1406](http://www.thedoghousediaries.com/1406)
 
+![Color Names](../images/colornames.png)
+
 ----
 
 <!-- Custom Styling - Modify for Fun and Learning - No Warranties Implied -->
