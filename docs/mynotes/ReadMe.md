@@ -16,6 +16,12 @@
 
 ----
 
+![Colors](../images/2010-03-01-12bf011.png)
+
+[http://www.thedoghousediaries.com/1406](http://www.thedoghousediaries.com/1406)
+
+----
+
 <!-- Custom Styling - Modify for Fun and Learning - No Warranties Implied -->
 <style type="text/css">
 img:first-child {
