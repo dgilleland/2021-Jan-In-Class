@@ -26,6 +26,13 @@ namespace WestWindSystem.BLL
             }
         }
 
+        public List<Customer> ListAllCustomers()
+        {
+            using (var context = new WestWindContext())
+            {
+                return context.Customers.ToList();
+            }
+        }
 
         public Customer FindCustomer(string customerId)
         {
