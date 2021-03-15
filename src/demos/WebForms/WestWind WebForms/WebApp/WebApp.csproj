@@ -122,6 +122,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Demos\CustomerSearch.aspx" />
+    <Content Include="Demos\ManageOrder.aspx" />
     <Content Include="Demos\ViewCustomerOrders.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -293,6 +294,13 @@
     </Compile>
     <Compile Include="Demos\CustomerSearch.aspx.designer.cs">
       <DependentUpon>CustomerSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\ManageOrder.aspx.cs">
+      <DependentUpon>ManageOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demos\ManageOrder.aspx.designer.cs">
+      <DependentUpon>ManageOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Demos\ViewCustomerOrders.aspx.cs">
       <DependentUpon>ViewCustomerOrders.aspx</DependentUpon>

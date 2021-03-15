@@ -13,5 +13,14 @@ namespace WestWindSystem.Entities
         public string Region { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
+
+        [NotMapped]
+        public string AbbreviatedAddress
+        {
+            get
+            {
+                return $"{City}, {Street}";
+            }
+        }
     }
 }

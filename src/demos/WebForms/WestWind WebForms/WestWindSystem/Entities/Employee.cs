@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WestWindSystem.Entities
 {
@@ -7,6 +8,17 @@ namespace WestWindSystem.Entities
         public int EmployeeID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+
+        // Tell EF that this FullName property does NOT map to a column on the table
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
         public string TitleOfCourtesy { get; set; }
         public string JobTitle { get; set; }
         public int? ReportsTo { get; set; }

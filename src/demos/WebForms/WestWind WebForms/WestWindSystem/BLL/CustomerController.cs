@@ -13,6 +13,14 @@ namespace WestWindSystem.BLL
     /// </summary>
     public class CustomerController
     {
+        public List<Customer> ListAllCustomers()
+        {
+            using (var context = new WestWindContext())
+            {
+                return context.Customers.ToList();
+            }
+        }
+
         public List<Customer> LoadCustomers(string partialName)
         {
             // Do a search of the database

@@ -41,5 +41,10 @@ namespace WebApp.Demos
                 OrdersGridView.DataBind();
             }
         }
+
+        protected void AddOrder_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Demos/ManageOrder", true);
+        }
     }
 }
