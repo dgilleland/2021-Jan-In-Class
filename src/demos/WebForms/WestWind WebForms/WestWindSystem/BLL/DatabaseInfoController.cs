@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WestWindSystem.DAL;
-using WestWindSystem.Entities;
+using WestWindSystem.DAL; // for the DbContext class
+using WestWindSystem.Entities; // for the Entity classes
 
 namespace WestWindSystem.BLL
 {

@@ -12,7 +12,7 @@ namespace WebApp.Demos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack) // GET Request
+            if (!IsPostBack) // GET Request
             {
                 // Retreive the customer and customer order information for the form
                 // 1) Manually grab the querystring data
@@ -40,6 +40,11 @@ namespace WebApp.Demos
                 OrdersGridView.DataSource = orders;
                 OrdersGridView.DataBind();
             }
+        }
+
+        protected void AddOrder_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Demos/ManageOrder", true);
         }
     }
 }

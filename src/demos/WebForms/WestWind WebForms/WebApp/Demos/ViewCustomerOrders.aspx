@@ -11,17 +11,17 @@
             -
             <asp:Label ID="PhoneNumber" runat="server" />
             <br />
-            <asp:LinkButton ID="AddOrder" runat="server" CssClass="btn btn-secondary">Add Order</asp:LinkButton>
+            <asp:LinkButton ID="AddOrder" runat="server" CssClass="btn btn-secondary" OnClick="AddOrder_Click">Add Order</asp:LinkButton>
         </div>
         <div class="col-md-9">
             <!-- HTML Table for all of the orders -->
             <h2>Orders</h2>
 
-            <asp:GridView ID="OrdersGridView" runat="server" CssClass="table table-hover" AutoGenerateColumns="false">
+            <asp:GridView ID="OrdersGridView" runat="server" CssClass="table table-hover" AutoGenerateColumns="false" ItemType="WestWindSystem.Entities.Order">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:LinkButton ID="EditLink" runat="server" CssClass="btn btn-secondary btn-sm">Edit</asp:LinkButton>
+                            <a href="ManageOrder.aspx?orderId=<%# Item.OrderID %>" class="btn btn-secondary btn-sm">Edit</a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="OrderDate" DataFormatString="{0:yyyy-MM-dd}" HeaderText="Order Date" />

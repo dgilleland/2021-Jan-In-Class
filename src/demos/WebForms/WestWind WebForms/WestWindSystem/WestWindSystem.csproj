@@ -51,9 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AddressController.cs" />
     <Compile Include="BLL\CustomerController.cs" />
     <Compile Include="BLL\DatabaseInfoController.cs" />
-    <Compile Include="BLL\EmployeesController.cs" />
+    <Compile Include="BLL\EmployeeController.cs" />
     <Compile Include="BLL\OrdersController.cs" />
     <Compile Include="DAL\WestWindContext.cs" />
     <Compile Include="Entities\Address.cs" />
