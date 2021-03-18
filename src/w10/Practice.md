@@ -7,7 +7,7 @@
 
 > To follow along with this exercise, you will need to open the [practice/index.html](./practice/index.html) in your browser with Live-Server.
 
-There are often times when you may need  something to happen on the page without a trigger from the user. Examples include: timed slideshows, rotating site or product reviews, simple animations (e.g. fades and slides), etc.). In order to trigger functions automatically, we can take advantage of several functions in the browser's global scope: `setTimeout` and `setInterval`.
+There are often times when you may need  something to happen on the page without a trigger from the user. Examples include: timed slideshows, rotating site or product reviews, simple animations (e.g. fades and slides), etc. In order to trigger functions automatically, we can take advantage of several functions in the browser's global scope: `setTimeout` and `setInterval`.
 
 To demonstrate how these functions can be used to automate actions on the page, we will revisit the image carousel from the previous exercise:
 

@@ -1,7 +1,29 @@
 // your js here...
-var images = ['mountain1.jpg', 'mountain2.jpg', 'mountain3.jpg'];
+// const images = ['mountain1.jpg', 'mountain2.jpg', 'mountain3.jpg'];
+const images = ['mountain1.jpg', 'mountain2.jpg', 'mountain3.jpg', 'mountain4.jpg', 'mountain5.jpg'];
 var currentImg = 0;
 var idx;
+
+// <<Start of my code changes...>>
+function updateSlide(index) {
+        // display the new current image
+        document.querySelector('.carousel>img').src = 'images/' + images[index];
+
+        // update the active selector bullet
+        document.querySelector('.image-tracker .active').classList.remove('active');
+        document.querySelectorAll('[data-idx]')[index].classList.add('active');
+}
+
+let slideshowInterval; // variable to track the context of the interval
+slideshowInterval = setInterval(function() {
+    currentImg += 1;
+    if (currentImg === images.length) {
+        currentImg = 0;
+    }
+    updateSlide(currentImg);
+}, 3000);
+
+// <</end of my code changes>>
 
 // display the current image
 document.querySelector('.carousel>img').src = 'images/' + images[0];
@@ -26,32 +48,29 @@ document.querySelector('.carousel').addEventListener('click', function(evt) {
             // move to the previous index in the array
             currentImg -= 1;
             currentImg = (currentImg < 0) ? images.length - 1 : currentImg;
+            //         if(we went past first) then use last otherwise no changes
         } else {
             // selector bullet clicked
             // use Number() to convert from string to number
             currentImg = Number(target.dataset.idx);
         }
 
-        // display the new current image
-        document.querySelector('.carousel>img').src = 'images/' + images[currentImg];
-
-        // update the active selector bullet
-        document.querySelector('.image-tracker .active').classList.remove('active');
-        document.querySelectorAll('[data-idx]')[currentImg].classList.add('active');
+        // Call our function
+        updateSlide(currentImg);
     }
 });
 
 // add a keypress event listener for left/right navigation
 document.addEventListener('keydown', function(evt) {
     var click;
-    switch (evt.keyCode) {
-        case 39:
+    switch (evt.code) { // evt.code is the proper replacement for evt.keyCode
+        case "ArrowRight":// 39:
             // right arrow, trigger .next click
             click = document.createEvent('HTMLEvents');
             click.initEvent('click', true, true);
             document.querySelector('.carousel .control.next').dispatchEvent(click);
             break;
-        case 37:
+        case "ArrowLeft": //37:
             // left arrow, trigger .prev click
             click = document.createEvent('HTMLEvents');
             click.initEvent('click', true, true);
