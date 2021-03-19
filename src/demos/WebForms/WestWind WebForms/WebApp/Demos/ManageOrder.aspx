@@ -5,11 +5,13 @@
 
     <div class="row">
         <div class="col">
-            <asp:LinkButton ID="AddOrder" runat="server" CssClass="btn btn-primary">Add Order</asp:LinkButton>
-            <asp:LinkButton ID="UpdateOrder" runat="server" CssClass="btn btn-success">Update Order</asp:LinkButton>
-            <asp:LinkButton ID="DeleteOrder" runat="server" CssClass="btn btn-danger">Delete Order</asp:LinkButton>
+            <asp:LinkButton ID="AddOrder" runat="server" CssClass="btn btn-primary" OnClick="AddOrder_Click">Add Order</asp:LinkButton>
+            <asp:LinkButton ID="UpdateOrder" runat="server" CssClass="btn btn-success" OnClick="UpdateOrder_Click">Update Order</asp:LinkButton>
+            <asp:LinkButton ID="DeleteOrder" runat="server" CssClass="btn btn-danger" OnClick="DeleteOrder_Click" CausesValidation="false">Delete Order</asp:LinkButton>
             <button type="reset" class="btn btn-secondary">Reset</button>
-            <asp:LinkButton ID="ClearForm" runat="server" CssClass="btn btn-warning">Clear Form</asp:LinkButton>
+            <asp:LinkButton ID="ClearForm" runat="server" CssClass="btn btn-warning" OnClick="ClearForm_Click" CausesValidation="false">Clear Form</asp:LinkButton>
+            <asp:Label ID="MessageLabel" runat="server" />
+            <asp:ValidationSummary ID="Summary" runat="server" />
         </div>
     </div>
     <div class="row">
@@ -24,6 +26,8 @@
 
             <asp:Label ID="Label3" runat="server" AssociatedControlID="Customer">Customer:</asp:Label>
             <asp:DropDownList ID="Customer" runat="server" CssClass="form-control" />
+            <asp:RequiredFieldValidator ID="CustomerRequired" runat="server" ControlToValidate="Customer"
+                 ErrorMessage="Customer is required for adding/updating" />
             <br />
 
             <asp:Label ID="Label4" runat="server" AssociatedControlID="OrderDate">Order Date:</asp:Label>

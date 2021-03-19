@@ -51,6 +51,24 @@ namespace WebApp.Demos
         protected global::System.Web.UI.WebControls.LinkButton ClearForm;
 
         /// <summary>
+        /// MessageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MessageLabel;
+
+        /// <summary>
+        /// Summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary Summary;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,15 @@ namespace WebApp.Demos
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Customer;
+
+        /// <summary>
+        /// CustomerRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CustomerRequired;
 
         /// <summary>
         /// Label4 control.

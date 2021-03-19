@@ -12,6 +12,7 @@ namespace WebApp.Demos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            MessageLabel.Text = string.Empty;
             if(!IsPostBack) // GET Request
             {
                 // Populate the various DropDownList controls with data
@@ -83,6 +84,137 @@ namespace WebApp.Demos
             ShipAddress.DataValueField = nameof(WestWindSystem.Entities.Address.AddressID);
             ShipAddress.DataBind();
             ShipAddress.Items.Insert(0, new ListItem("[Select an Address]", ""));
+        }
+
+        // Our <asp:LinkButton> and <asp:Button> controls on our form have a OnClick event that will cause
+        // the browser to submit the form. Our markup associates the name of our method (below) with the click event.
+        protected void ClearForm_Click(object sender, EventArgs e)
+        {
+            // Clearing out the Textbox controls
+            OrderId.Text = string.Empty; // I like using string.Empty because it's a little more explcit
+            Freight.Text = string.Empty;
+            // btw, I can basically "chain" a bunch of assignment statements
+            Comments.Text = ShipName.Text = OrderDate.Text = RequiredDate.Text = PaymentDueDate.Text = string.Empty;
+
+            // Clear the CheckBox control
+            Shipped.Checked = false;
+
+            // Clear the DropDownList controls
+            Customer.SelectedIndex = -1; // No item in the list
+            SalesRep.SelectedIndex = -1;
+            ShipAddress.SelectedIndex = -1;
+        }
+
+        protected void UpdateOrder_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            // 0) Perform basic server-side validation
+            if (IsValid && int.TryParse(OrderId.Text, out id)) // IsValid is going to run the validation controls on the server-side
+            {
+                try
+                {
+                    // 1) Bundle the data into an Order object
+                    var item = BundleOrderData();
+                    item.OrderID = id;
+
+                    // 2) Send the object to the BLL for processing
+                    var controller = new OrdersController();
+                    controller.UpdateOrder(item);
+
+                    // 3) Give feedback to the user
+                    MessageLabel.Text = $"Order information updated for order {OrderId.Text}";
+                }
+                catch (Exception ex)
+                {
+                    string details = GetInnerExeceptionDetails(ex);
+                    MessageLabel.Text = $"There was a problem processing the update: {details}";
+                }
+            }
+            else
+            {
+                if (id == 0)
+                    MessageLabel.Text = "You must have an existing order before you can update";
+                else
+                    MessageLabel.Text = "Please fill out required information before processing.";
+            }
+        }
+
+        protected void AddOrder_Click(object sender, EventArgs e)
+        {
+            if (IsValid) // Checks the validation controls on the server-side
+            {
+                try
+                {
+                    // 1) Bundle the data into an Order object
+                    var item = BundleOrderData();
+
+                    // 2) Send the object to the BLL for processing
+                    var controller = new OrdersController();
+                    int id = controller.AddOrder(item);
+
+                    // 3) Give feedback to the user
+                    MessageLabel.Text = $"New Order generated with {id}";
+                    OrderId.Text = id.ToString();
+                }
+                catch (Exception ex)
+                {
+                    string details = GetInnerExeceptionDetails(ex);
+                    MessageLabel.Text = $"There was a problem processing the add: {details}";
+                }
+            }
+        }
+
+        private WestWindSystem.Entities.Order BundleOrderData()
+        {
+            return new WestWindSystem.Entities.Order
+            {
+                //OrderID = int.Parse(OrderId.Text),
+                Freight = Freight.Text.ToNullableDecimal(),
+                Comments = Comments.Text,
+                ShipName = ShipName.Text,
+                OrderDate = OrderDate.Text.ToNullableDateTime(),
+                RequiredDate = RequiredDate.Text.ToNullableDateTime(),
+                PaymentDueDate = PaymentDueDate.Text.ToNullableDateTime(),
+                Shipped = Shipped.Checked,
+                CustomerID = Customer.SelectedValue,
+                SalesRepID = SalesRep.SelectedValue.ToNullableInt(),
+                ShipAddressID = ShipAddress.SelectedValue.ToNullableInt()
+            };
+        }
+
+        protected void DeleteOrder_Click(object sender, EventArgs e)
+        {
+            int id;
+            // 1) Identify the order
+            if (int.TryParse(OrderId.Text, out id))
+            {
+                try
+                {
+                    // 2) Send the data to the BLL for processing
+                    var controller = new OrdersController();
+                    controller.DeleteOrder(id);
+                    // 3) Give feedback to the user
+                    MessageLabel.Text = $"The order was deleted.";
+                    ClearForm_Click(sender, e); // Re-use this clear method.
+                }
+                catch (Exception ex)
+                {
+                    string details = GetInnerExeceptionDetails(ex);
+                    MessageLabel.Text = $"There was a problem in deleting the order: {details}";
+                }
+            }
+            else
+            {
+                MessageLabel.Text = "You can only delete an existing order.";
+            }
+        }
+
+        private string GetInnerExeceptionDetails(Exception ex)
+        {
+            Exception current = ex;
+            while (current.InnerException != null)
+                current = current.InnerException;
+            return current.Message;
         }
     }
 }
