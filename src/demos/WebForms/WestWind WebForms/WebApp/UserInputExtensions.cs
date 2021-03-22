@@ -31,4 +31,15 @@ namespace WebApp
             return null;
         }
     }
+
+    public static class ExceptionExtensions
+    {
+        public static Exception InnermostException(this Exception self)
+        {
+            Exception current = self;
+            while (current.InnerException != null)
+                current = current.InnerException;
+            return current;
+        }
+    }
 }

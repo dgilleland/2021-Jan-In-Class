@@ -4,24 +4,25 @@
     <h1 class="page-header">Manage Products</h1>
 
     <div class="row">
-        <div class="col">
+        <div class="col-md-4">
+            <h2>Lookup Product</h2>
             <div class="form-inline mb-2">
                 <asp:DropDownList ID="AllCategories" runat="server" CssClass="form-control mr-2" />
                 <asp:LinkButton ID="FilterByCategory" runat="server" CssClass="btn btn-secondary" OnClick="FilterByCategory_Click">Filter</asp:LinkButton>
             </div>
             <div class="form-inline">
                 <asp:DropDownList ID="FilteredProducts" runat="server" CssClass="form-control mr-2" />
-                <asp:LinkButton ID="SearchForProduct" runat="server" CssClass="btn btn-secondary">Search</asp:LinkButton>
+                <asp:LinkButton ID="SearchForProduct" runat="server" CssClass="btn btn-secondary" OnClick="SearchForProduct_Click">Search</asp:LinkButton>
             </div>
             <asp:Label ID="MessageLabel" runat="server" />
 
             <hr />
 
             <div class="mb-2">
-                <asp:LinkButton ID="AddProduct" runat="server" CssClass="btn btn-primary">Add</asp:LinkButton>
-                <asp:LinkButton ID="UpdateProduct" runat="server" CssClass="btn btn-success">Update</asp:LinkButton>
-                <asp:LinkButton ID="DeleteProduct" runat="server" CssClass="btn btn-danger">Delete</asp:LinkButton>
-                <asp:LinkButton ID="ClearForm" runat="server" CssClass="btn btn-warning">Clear</asp:LinkButton>
+                <asp:LinkButton ID="AddProduct" runat="server" CssClass="btn btn-primary" OnClick="AddProduct_Click">Add</asp:LinkButton>
+                <asp:LinkButton ID="UpdateProduct" runat="server" CssClass="btn btn-success" OnClick="UpdateProduct_Click">Update</asp:LinkButton>
+                <asp:LinkButton ID="DeleteProduct" runat="server" CssClass="btn btn-danger" OnClick="DeleteProduct_Click">Delete</asp:LinkButton>
+                <asp:LinkButton ID="ClearForm" runat="server" CssClass="btn btn-warning" OnClick="ClearForm_Click">Clear</asp:LinkButton>
             </div>
             <div class="form-row mb-2">
                 <asp:Label ID="Label1" runat="server" CssClass="col-sm-3" AssociatedControlID="ProductID" Text="Product ID" />
@@ -55,6 +56,11 @@
                 <asp:Label ID="Label8" runat="server" CssClass="col-sm-3" AssociatedControlID="Discontinued" Text="Discontinued" />
                 <asp:CheckBox ID="Discontinued" runat="server" CssClass="col-sm-9" />
             </div>
+        </div>
+
+        <div class="col-md-8">
+            <h2>Student Notes</h2>
+
         </div>
     </div>
 </asp:Content>
