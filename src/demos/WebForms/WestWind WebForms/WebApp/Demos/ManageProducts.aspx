@@ -60,7 +60,14 @@
 
         <div class="col-md-8">
             <h2>Student Notes</h2>
-
+            <p>TODO:</p>
+            <ul>
+                <li>Add Validation Controls</li>
+                <li>Demonstrate Search/GridView/Stored Procedures</li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
     </div>
 </asp:Content>
