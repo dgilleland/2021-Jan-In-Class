@@ -53,23 +53,55 @@ namespace MyApp
 
     public class Fraction
     {
-        public int Numerator { get; }
-        public int Denominator { get; }
+        public int Numerator { get; private set; }
+        public int Denominator { get; private set; }
         public Fraction(int num, int denom)
         {
+            if (denom == 0)
+                throw new DivideByZeroException();
             Numerator = num;
             Denominator = denom;
+            FixSign();
+        }
+        private void FixSign()
+        {
+            if (Denominator < 0)
+            {
+                Denominator *= -1;
+                Numerator *= -1;
+            }
+        }
+        public bool IsProper
+        {
+            get
+            {
+                bool proper;
+                if (Numerator < Denominator)
+                    proper = true;
+                else
+                    proper = false;
+                return proper;
+            }
         }
         public override string ToString()
         {
-            return $"{Numerator}/{Denominator}";
+            string stringValue = "";
+            if (IsProper)
+                stringValue += (Numerator / Denominator) + " and "
+                             + (Numerator % Denominator) + "/" + Denominator;
+            else
+                stringValue += Numerator + "/" + Denominator;
+            return stringValue;
         }
 
         public double ToDouble()
         {
             return (double)Numerator / Denominator;
         }
-
+        public Fraction Reciprocal
+        {
+            get { return new Fraction(Denominator, Numerator); }
+        }
         public static Fraction Parse(string input)
         {
             // Simple parsing of a string - we just let any errors get thrown
@@ -91,6 +123,48 @@ namespace MyApp
                 result = null; // Failed. Give a null object as the default
                 return false;
             }
+        }
+
+        public static Fraction operator +(Fraction a) => a;
+        public static Fraction operator -(Fraction a) => new Fraction(-a.Numerator, a.Denominator);
+
+        public static Fraction operator +(Fraction a, Fraction b)
+            => new Fraction(a.Numerator * b.Denominator + b.Numerator * a.Denominator, a.Denominator * b.Denominator);
+
+        public static Fraction operator -(Fraction a, Fraction b)
+            => a + (-b);
+
+        public static Fraction operator *(Fraction a, Fraction b)
+            => new Fraction(a.Numerator * b.Numerator, a.Denominator * b.Denominator);
+
+        public static Fraction operator /(Fraction a, Fraction b)
+        {
+            if (b.Numerator == 0)
+            {
+                throw new DivideByZeroException();
+            }
+            return new Fraction(a.Numerator * b.Denominator, a.Denominator * b.Numerator);
+        }
+
+        private int GreatestCommonDenominator()
+        {
+            int commonDenominator = 1;
+            int count = 2, halfWay;
+            int absoluteNumerator = System.Math.Abs(Numerator);
+            if (absoluteNumerator > Denominator)
+                halfWay = absoluteNumerator / 2;
+            else
+                halfWay = Denominator / 2;
+
+            while (count <= halfWay)
+            {
+                if (absoluteNumerator % count == 0 &&
+                    Denominator % count == 0)
+                    commonDenominator = count;
+                count++;
+            }
+
+            return commonDenominator;
         }
     }
 }
