@@ -13,7 +13,7 @@ namespace WebApp.Demos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack) // GET Request
+            if (!IsPostBack) // GET Request
             {
                 // Populate my drop-down with default data
                 MatchingNames.Items.Add(new ListItem("[Select a customer]", string.Empty));

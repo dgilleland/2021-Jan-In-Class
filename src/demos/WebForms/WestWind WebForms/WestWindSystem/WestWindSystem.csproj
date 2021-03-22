@@ -56,6 +56,7 @@
     <Compile Include="BLL\DatabaseInfoController.cs" />
     <Compile Include="BLL\EmployeeController.cs" />
     <Compile Include="BLL\OrdersController.cs" />
+    <Compile Include="BLL\ProductManager.cs" />
     <Compile Include="DAL\WestWindContext.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BuildVersion.cs" />
