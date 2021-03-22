@@ -71,39 +71,48 @@ namespace WebApp.Demos
 
         protected void AddProduct_Click(object sender, EventArgs e)
         {
-            try
+            if (IsValid) // Trigger the Validation Controls including making sure that the ValidationSummary displays error
             {
-                Product item = ParseProductDetails();
-                int id = _Manager.Add(item);
-                ProductID.Text = id.ToString();
-                MessageLabel.Text = "Product added";
-            }
-            catch (Exception ex)
-            {
-                MessageLabel.Text = $"{ex.InnermostException().Message}.";
+                try
+                {
+                    Product item = ParseProductDetails();
+                    int id = _Manager.Add(item);
+                    ProductID.Text = id.ToString();
+                    MessageLabel.Text = "Product added";
+                }
+                catch (Exception ex)
+                {
+                    MessageLabel.Text = $"{ex.InnermostException().Message}.";
+                }
             }
         }
 
         protected void UpdateProduct_Click(object sender, EventArgs e)
         {
-            try
+            if (IsValid) // Trigger the Validation Controls
             {
-                int id;
-                if(int.TryParse(ProductID.Text, out id))
+                try
                 {
-                    Product item = ParseProductDetails();
-                    item.ProductID = id;
-                    _Manager.Update(item);
-                    MessageLabel.Text = "Product details updated";
+                    int id;
+                    if (int.TryParse(ProductID.Text, out id))
+                    {
+                        Product item = ParseProductDetails();
+                        item.ProductID = id;
+                        _Manager.Update(item);
+                        MessageLabel.Text = "Product details updated";
+                        // Reload the products drop-down list
+                        FilterByCategory_Click(sender, e); // re-use the existing method that populates the drop-down
+                        FilteredProducts.SelectedValue = item.ProductID.ToString();
+                    }
+                    else
+                    {
+                        MessageLabel.Text = "You can only update an existing product.";
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageLabel.Text = "You can only update an existing product.";
+                    MessageLabel.Text = $"{ex.InnermostException().Message}.";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageLabel.Text = $"{ex.InnermostException().Message}.";
             }
         }
 
@@ -164,7 +173,7 @@ namespace WebApp.Demos
             dropDown.Items.Insert(0, new ListItem(prompt, ""));
         }
 
-        void PopulateSupplierDropDown()
+        private void PopulateSupplierDropDown()
         {
             Suppliers.DataSource = _Manager.ListAllSuppliers();
             Suppliers.DataTextField = nameof(Supplier.CompanyName);

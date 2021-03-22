@@ -124,6 +124,8 @@
     <Content Include="Demos\CustomerSearch.aspx" />
     <Content Include="Demos\ManageOrder.aspx" />
     <Content Include="Demos\ManageProducts.aspx" />
+    <Content Include="Demos\SearchProducts.aspx" />
+    <Content Include="Demos\SearchProductsByPartialName.aspx" />
     <Content Include="Demos\ViewCustomerOrders.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -309,6 +311,20 @@
     </Compile>
     <Compile Include="Demos\ManageProducts.aspx.designer.cs">
       <DependentUpon>ManageProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\SearchProducts.aspx.cs">
+      <DependentUpon>SearchProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demos\SearchProducts.aspx.designer.cs">
+      <DependentUpon>SearchProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\SearchProductsByPartialName.aspx.cs">
+      <DependentUpon>SearchProductsByPartialName.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demos\SearchProductsByPartialName.aspx.designer.cs">
+      <DependentUpon>SearchProductsByPartialName.aspx</DependentUpon>
     </Compile>
     <Compile Include="Demos\ViewCustomerOrders.aspx.cs">
       <DependentUpon>ViewCustomerOrders.aspx</DependentUpon>

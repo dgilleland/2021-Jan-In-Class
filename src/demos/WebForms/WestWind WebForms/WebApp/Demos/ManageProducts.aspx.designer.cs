@@ -60,6 +60,15 @@ namespace WebApp.Demos
         protected global::System.Web.UI.WebControls.Label MessageLabel;
 
         /// <summary>
+        /// Summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary Summary;
+
+        /// <summary>
         /// AddProduct control.
         /// </summary>
         /// <remarks>
@@ -132,6 +141,15 @@ namespace WebApp.Demos
         protected global::System.Web.UI.WebControls.TextBox ProductName;
 
         /// <summary>
+        /// RequiredProductName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredProductName;
+
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -148,6 +166,15 @@ namespace WebApp.Demos
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Suppliers;
+
+        /// <summary>
+        /// RequiredSupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredSupplier;
 
         /// <summary>
         /// Label4 control.
@@ -168,6 +195,15 @@ namespace WebApp.Demos
         protected global::System.Web.UI.WebControls.DropDownList Categories;
 
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// Label6 control.
         /// </summary>
         /// <remarks>
@@ -184,6 +220,15 @@ namespace WebApp.Demos
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox QtyPerUnit;
+
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// Label7 control.
@@ -204,6 +249,24 @@ namespace WebApp.Demos
         protected global::System.Web.UI.WebControls.TextBox Price;
 
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
+        /// PriceComparison control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator PriceComparison;
+
+        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -220,6 +283,24 @@ namespace WebApp.Demos
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox OnOrder;
+
+        /// <summary>
+        /// RequiredOnOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredOnOrder;
+
+        /// <summary>
+        /// OnOrderComparison control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator OnOrderComparison;
 
         /// <summary>
         /// Label8 control.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using WestWindSystem.Entities;
 namespace WestWindSystem.BLL
 {
     // You can call your BLL class anything that makes sense
+    [DataObject] // Identify that my ProductManager class can be "inspected" for providing data to DataBound Controls
     public class ProductManager
     {
         #region Product Command methods - INSERT/UPDATE/DELETE
@@ -70,6 +72,38 @@ namespace WestWindSystem.BLL
                               // .OrderBy() is an extension method for sorting
                               .OrderBy(item => item.ProductName)
                               .ToList();
+            }
+        }
+        
+        public List<Product> LookupProductsBySupplier(int supplierId)
+        {
+            using (var context = new WestWindContext())
+            {
+                List<Product> result;
+                // I can look this up a number of ways.
+                // a) Use a LINQ Expression
+                //var items = from eachRow in context.Products
+                //            where eachRow.SupplierID == supplierId
+                //            select eachRow;
+                // b) Use a LINQ Extension Method
+                //var items = context.Products.Where(eachRow => eachRow.SupplierID == supplierId);
+                // c) Call a Stored Procedure (as long as it returns an entity type that I support)
+                var items = context.Database.SqlQuery<Product>("EXEC Products_GetBySupplier {0}", supplierId);
+
+                result = items.ToList(); // convert the query result to a list of items
+                return result;
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Product> LookupProductsByPartialName(string partial)
+        {
+            using (var context = new WestWindContext())
+            {
+                var result = from item in context.Products
+                             where item.ProductName.Contains(partial)
+                             select item;
+                return result.ToList();
             }
         }
 
