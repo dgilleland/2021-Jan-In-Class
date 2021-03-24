@@ -1,55 +1,64 @@
 /*
-  Add the required JavaScript to handle form submit and add a new todo item to 
-  the page (in the div.todo-list element).  You will need to use a counter to 
-  uniquely identify each todo item and use only DOM API functions to interact
-  with the document (i.e. create each todo item), DO NOT use innerHTML for this
-  exercise.
+    Example of how each todo item needs to structured (DOM fragment)
+    <div>
+        <input type="checkbox" />
+        <label for="todo-1" contenteditable>Todo 1</label>
+    </div>
 */
 
-// required vars
-var todos = document.querySelector('.todo-list');
-var todoCount = 0;
+const appendToDo = function(evt) {
+    evt.preventDefault(); // sometimes this is good to do right at the start
 
-// todo form submit handler, adds a new todo item to the 'list'
-document.querySelector('.todo-frm').addEventListener('submit', function (evt) {
-	
-	var div,
-		checkbox,
-		label,
-		labelText,
-		todoText;
+    // 0) Create local variables
+    // a reference to the element in the DOM that we want to add to
+    let todoList = document.querySelector('.todo-list');
+    // check for a todoCount on my todoList element
+    let todoCount = todoList.dataset.todoCount;
+    if(todoCount == undefined) {
+        todoCount = 0;
+    } else {
+        todoCount = parseInt(todoCount);
+    }
+    let nextCount = todoCount + 1;
+    // variables for creating the DOM fragment
+    let div, todoText, label, checkbox, labelText;
+    todoText = evt.target.elements['todo-item'].value;
+    
+    // 1) check for empty input value; use "dummy text" if empty
+    if (todoText == '') {
+        todoText = 'Todo ' + nextCount;
+    }
 
-	todoText = evt.target.elements['todo-item'].value;
+    // 2) create the required nodes to build the DOM fragment
+    div = document.createElement('div');
+    checkbox = document.createElement('input');
+    label = document.createElement('label');
+    labelText = document.createTextNode(todoText); // Create a text node with our todo text.
+    
+    // 3) set the required attributes
+    checkbox.setAttribute('type', 'checkbox'); // <input type='checkbox' />
+    label.setAttribute('for', 'todo-' + nextCount); // <label for='todo-1'
+    label.setAttribute('contenteditable', ''); // <label ...   contenteditable
 
-	// adding a todo regardless, so might as well increment now...
-	todoCount += 1;
-	
-	if (todoText === '') {
-		todoText = 'Todo ' + (todoCount);
-	}
+    // 4) build the DOM fragment (assemble the parts)
+    label.appendChild(labelText); // put the text inside: <label ..>text</label>
+    console.log('My label element:', label);
+    div.appendChild(checkbox); // put the checkbox inside the div at the end
+    div.appendChild(label); // put the label inside the div at the end
+    console.log('My constructed div:', div);
 
-	// create required elements
-	div = document.createElement('div');
-	checkbox = document.createElement('input');
-	label = document.createElement('label');
-	labelText = document.createTextNode(todoText);
+    // 5) add the DOM fragment to the document (append to the div)
+    // My todoList variable references an element that is already part of the
+    // webpage. I am adding my in-memory <div> that I constructed to this DOM element.
+    todoList.appendChild(div); // add to the end
 
-	// set appropriate attributes
-	checkbox.setAttribute('type', 'checkbox');
-	checkbox.setAttribute('id', 'todo-' + todoCount);
-	label.setAttribute('for', 'todo-' + todoCount);
-	label.setAttribute('contenteditable', '');
+    // 6) increase the count (tracking how many todo-items I have)
+    todoCount = nextCount; // which was calculated as todoCount + 1
+    todoList.dataset.todoCount = todoCount;
 
-	// build document fragment
-	label.appendChild(labelText);
-	div.appendChild(checkbox);
-	div.appendChild(label);
+    // 7) clear the input textbox
+    evt.target.reset();
+}
 
-	// add the document fragment to the document for rendering
-	todos.appendChild(div);
-
-	// clear the form
-	evt.target.reset();
-
-	evt.preventDefault();
-});
+document.querySelector('form')
+        .addEventListener('submit', appendToDo);
