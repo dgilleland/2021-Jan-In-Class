@@ -6,21 +6,27 @@
     </div>
 */
 
-let todoCount = 0;
-
 const appendToDo = function(evt) {
     evt.preventDefault(); // sometimes this is good to do right at the start
 
     // 0) Create local variables
     // a reference to the element in the DOM that we want to add to
     let todoList = document.querySelector('.todo-list');
+    // check for a todoCount on my todoList element
+    let todoCount = todoList.dataset.todoCount;
+    if(todoCount == undefined) {
+        todoCount = 0;
+    } else {
+        todoCount = parseInt(todoCount);
+    }
+    let nextCount = todoCount + 1;
     // variables for creating the DOM fragment
     let div, todoText, label, checkbox, labelText;
     todoText = evt.target.elements['todo-item'].value;
     
     // 1) check for empty input value; use "dummy text" if empty
     if (todoText == '') {
-        todoText = 'Todo ' + (todoCount + 1);
+        todoText = 'Todo ' + nextCount;
     }
 
     // 2) create the required nodes to build the DOM fragment
@@ -31,7 +37,7 @@ const appendToDo = function(evt) {
     
     // 3) set the required attributes
     checkbox.setAttribute('type', 'checkbox'); // <input type='checkbox' />
-    label.setAttribute('for', 'todo-' + (todoCount + 1)); // <label for='todo-1'
+    label.setAttribute('for', 'todo-' + nextCount); // <label for='todo-1'
     label.setAttribute('contenteditable', ''); // <label ...   contenteditable
 
     // 4) build the DOM fragment (assemble the parts)
@@ -47,6 +53,9 @@ const appendToDo = function(evt) {
     todoList.appendChild(div); // add to the end
 
     // 6) increase the count (tracking how many todo-items I have)
+    todoCount = nextCount; // which was calculated as todoCount + 1
+    todoList.dataset.todoCount = todoCount;
+
     // 7) clear the input textbox
     evt.target.reset();
 }
