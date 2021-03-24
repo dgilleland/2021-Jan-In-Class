@@ -81,7 +81,8 @@ const moveToDoItem = function (evt) {
 	if (target.classList.contains('arrow')) {
 		// identify the type of arrow (i.e. down or up)
 		if (target.classList.contains('dn')) {
-			/*  - A
+			/*
+				- A
 				- B <- click down (to go after C)
 				- C
 			*/
@@ -92,7 +93,8 @@ const moveToDoItem = function (evt) {
 				todoList.insertBefore(newChild, refChild);
 			}
 		} else if (target.classList.contains('up')) {
-			/*  - A
+			/*
+				- A
 				- B <- click up (to go before A)
 				- C
 			*/
