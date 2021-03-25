@@ -17,12 +17,22 @@
         <div class="col">
             <h2>Customizing the GridView</h2>
 
-            <div>
+            <div id="MessageContainer" runat="server">
                 <asp:Label ID="MessageLabel" runat="server" />
             </div>
 
             <asp:Label ID="Label1" runat="server" AssociatedControlID="StudyProgramList">Study Major: </asp:Label>
             <asp:RadioButtonList ID="StudyProgramList" runat="server" DataSourceID="StudyProgramDataSource" DataTextField="Name" DataValueField="ProgramId" RepeatDirection="Horizontal" RepeatLayout="Flow" CssClass="custom-table" />
+
+            <br />
+
+            <asp:Label ID="Label2" runat="server" AssociatedControlID="CitizenshipList">Canadian Citizen: </asp:Label>
+            <asp:RadioButtonList ID="CitizenshipList" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" CssClass="custom-table">
+                <asp:ListItem Value="true">Yes</asp:ListItem>
+                <asp:ListItem Value="false">No</asp:ListItem>
+            </asp:RadioButtonList>
+
+            <br />
 
             <asp:GridView ID="AdHocGridView" runat="server" 
                 AutoGenerateColumns="False" DataSourceID="FakeMarksDataSource" 
@@ -63,14 +73,11 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Getting started</h2>
+            <h2>Going Fishing</h2>
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+                Fish are interesting things.
             </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
+            <asp:GridView ID="FishGridView" runat="server"></asp:GridView>
         </div>
         <div class="col-md-4">
             <h2>Get more libraries</h2>

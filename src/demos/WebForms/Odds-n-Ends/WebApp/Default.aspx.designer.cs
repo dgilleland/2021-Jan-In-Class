@@ -15,6 +15,15 @@ namespace WebApp
     {
 
         /// <summary>
+        /// MessageContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MessageContainer;
+
+        /// <summary>
         /// MessageLabel control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,24 @@ namespace WebApp
         protected global::System.Web.UI.WebControls.RadioButtonList StudyProgramList;
 
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
+        /// CitizenshipList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList CitizenshipList;
+
+        /// <summary>
         /// AdHocGridView control.
         /// </summary>
         /// <remarks>
@@ -67,5 +94,14 @@ namespace WebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource StudyProgramDataSource;
+
+        /// <summary>
+        /// FishGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView FishGridView;
     }
 }

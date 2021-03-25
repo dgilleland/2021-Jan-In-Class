@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBackendServices.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -37,6 +38,14 @@ namespace MyBackendServices.BLL
             result.Add(new StudyProgram { ProgramId = 3, Name = "Cyberdefense" });
 
             return result;
+        }
+
+        public List<Fish> ListFishThings()
+        {
+            using(var context = new DAL.AquamanContext())
+            {
+                return context.SlimeyThings.ToList();
+            }
         }
     }
 

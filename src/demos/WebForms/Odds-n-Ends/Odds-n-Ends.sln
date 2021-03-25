@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBackendServices", "MyBackendServices\MyBackendServices.csproj", "{97FADC84-86FA-41D6-AEBC-404DF8364B58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBackendServices.Data", "MyBackendServices.Data\MyBackendServices.Data.csproj", "{DED81037-B633-485F-88BD-DE8335AEB620}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{97FADC84-86FA-41D6-AEBC-404DF8364B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97FADC84-86FA-41D6-AEBC-404DF8364B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97FADC84-86FA-41D6-AEBC-404DF8364B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED81037-B633-485F-88BD-DE8335AEB620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED81037-B633-485F-88BD-DE8335AEB620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED81037-B633-485F-88BD-DE8335AEB620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED81037-B633-485F-88BD-DE8335AEB620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
