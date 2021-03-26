@@ -33,6 +33,15 @@ namespace WebApp
         protected global::System.Web.UI.WebControls.TextBox YourFullName;
 
         /// <summary>
+        /// requiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator1;
+
+        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,24 @@ namespace WebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox YourEmail;
+
+        /// <summary>
+        /// requiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator2;
+
+        /// <summary>
+        /// EmailFormatValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailFormatValidator;
 
         /// <summary>
         /// Label3 control.
@@ -69,6 +96,15 @@ namespace WebApp
         protected global::System.Web.UI.WebControls.TextBox YourAge;
 
         /// <summary>
+        /// requiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator3;
+
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -87,6 +123,24 @@ namespace WebApp
         protected global::System.Web.UI.WebControls.TextBox YourMinStartingSalary;
 
         /// <summary>
+        /// requiredFieldValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator4;
+
+        /// <summary>
+        /// SalaryRangeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator SalaryRangeValidator;
+
+        /// <summary>
         /// ApplyForJob control.
         /// </summary>
         /// <remarks>
@@ -94,6 +148,15 @@ namespace WebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton ApplyForJob;
+
+        /// <summary>
+        /// Summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary Summary;
 
         /// <summary>
         /// ApplicationsGridView control.
