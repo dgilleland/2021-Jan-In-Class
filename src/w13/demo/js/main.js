@@ -5,7 +5,7 @@ function handleResponse() {
 }
 
 function sendRequest() {
-	xhr.open('GET', 'plaind.txt', true);
+	xhr.open('GET', 'plain.txt', true);
 	xhr.addEventListener('load', handleResponse);
 	xhr.send(null);
 }
