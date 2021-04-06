@@ -34,11 +34,11 @@
 
             <br />
 
-            <asp:GridView ID="AdHocGridView" runat="server" 
-                AutoGenerateColumns="False" DataSourceID="FakeMarksDataSource" 
-                CssClass="table table-hover" DataKeyNames="Number" 
+            <asp:GridView ID="AdHocGridView" runat="server"
+                AutoGenerateColumns="False" DataSourceID="FakeMarksDataSource"
+                CssClass="table table-hover" DataKeyNames="Number"
                 OnSelectedIndexChanged="AdHocGridView_SelectedIndexChanged"
-                ItemType="MyBackendServices.BLL.CourseMarks">
+                ItemType="MyBackendServices.BLL.CourseMarks" AllowPaging="True" PageSize="4">
                 <Columns>
                     <asp:CommandField ShowSelectButton="true" SelectText="Redeem Credits" HeaderText="Action" />
                     <asp:BoundField DataField="Number" HeaderText="Number" SortExpression="Number"></asp:BoundField>
