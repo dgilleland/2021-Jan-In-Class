@@ -1,6 +1,6 @@
 # Creating Custom Objects
 
-##Object Orientation
+## Object Orientation
 
 > To follow along with this exercise, you will need to download and un-zip this [starter kit](.zip).
 
