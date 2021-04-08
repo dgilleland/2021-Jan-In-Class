@@ -48,6 +48,7 @@
                     <a runat="server" class="nav-link" href="~/">Home</a>
                     <a runat="server" class="nav-link" href="~/About">About</a>
                     <a runat="server" class="nav-link" href="~/Contact">Contact</a>
+                    <a runat="server" class="nav-link" href="~/GridViewDemo.aspx">Another GridView Demo</a>
                 </div>
             </div>
         </nav>
