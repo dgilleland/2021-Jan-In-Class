@@ -12,7 +12,33 @@
     <header>
         <h1>Course Marks - CPSC-1520</h1>
     </header>
-    <main></main>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Earned</th>
+                </tr>
+            </thead>
+            <tbody id="evaluation-items"></tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <th id="total-weight"></th>
+                    <th id="total-earned"></th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <template id="item-row">
+            <tr>
+                <td data-id="Name"></td>
+                <td data-id="Weight"></td>
+                <td data-id="Earned"></td>
+            </tr>
+        </template>
+    </main>
     <footer></footer>
 </body>
 </html>
