@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject BlogDemo.Data.BloggingContext _BlogContext
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,6 +25,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        @{
+                            // Grab all the blog titles
+                            var blogTitles = _BlogContext.Blogs.Select(eachBlog => eachBlog.Title);
+                            foreach (var title in blogTitles)
+                            {
+                                <li class="nav-item">
+                                    <form method="post">
+                                        <input type="hidden" name="BlogTitle" value="@title" />
+                                        <button type="submit" class="nav-link text-dark" asp-page="/Blog">@title</button>
+                                    </form>
+                                </li>
+                            }
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

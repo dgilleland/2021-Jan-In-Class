@@ -1,0 +1,21 @@
+﻿@page
+@model BlogDemo.Pages.BlogModel
+@{
+}
+<h1>@Model.BlogTitle</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form method="post">
+        <input type="hidden" asp-for="BlogTitle" />
+        <fieldset>
+            <legend>New Post</legend>
+            <label>Post Title: <input type="text" asp-for="PostTitle" /></label>
+            <button type="submit">Create Post</button>
+            <label>
+                Post Content:<br />
+                <textarea asp-for="PostBody" cols="120" rows="10"></textarea>
+            </label>
+        </fieldset>
+    </form>
+}

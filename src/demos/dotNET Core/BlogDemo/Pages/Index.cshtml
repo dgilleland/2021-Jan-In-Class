@@ -5,6 +5,21 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome @Model.BlogTitle</h1>
+    <p>Hello @Model.VisitorName!</p>
+    @if (Model.IsAuthenticated)
+    {
+        <p>It appears you have <b>@(string.IsNullOrEmpty(Model.BlogTitle)? "not": string.Empty)</b> set up your blog.</p>
+        if (string.IsNullOrEmpty(Model.BlogTitle))
+        {
+            <form method="post">
+                <p>Enter a title for your blog. This will allow visitors to more quickly associate your blog posts with you.</p>
+                <fieldset>
+                    <legend>Blog Title/Brand</legend>
+                    <input type="text" asp-for="BlogTitle" />
+                    <button type="submit">Set my Blog Account Title/Brand</button>
+                </fieldset>
+            </form>
+        }
+    }
 </div>
