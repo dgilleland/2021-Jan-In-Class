@@ -1,4 +1,5 @@
-﻿using MyBackendServices.Data;
+﻿using Humanizer;
+using MyBackendServices.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,14 @@ namespace MyBackendServices.BLL
     [DataObject]
     public class FakeData
     {
+        private static Random _rnd = new Random();
+
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<CourseMarks> ListCourseMarks()
         {
+            // For Faking some back-end exception
+            if (_rnd.Next(10) > 7)
+                throw new Exception($"Fake Data Exception in {nameof(ListCourseMarks)}. Nothing to be alarmed about. Refresh the page and all should be fine....");
             List<CourseMarks> result = new List<CourseMarks>();
 
             // TODO: Add some data
@@ -61,6 +67,32 @@ namespace MyBackendServices.BLL
             using(var context = new DAL.AquamanContext())
             {
                 return context.SlimeyThings.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Number> GetSomeNumbers()
+        {
+            return Enumerable.Range(1, 5).Select(x => new Number { Value = x  }).ToList();
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Number> GetMultiplesOfSomeNumber(int number)
+        {
+            if(number > 0)
+                return Enumerable.Range(1, 7).Select(x => new Number { Value = x * number }).ToList();
+            return new List<Number>();
+        }
+    }
+
+    public class Number
+    {
+        public int Value { get; set; }
+        public string Name
+        {
+            get
+            {
+                return Value.ToOrdinalWords();
             }
         }
     }

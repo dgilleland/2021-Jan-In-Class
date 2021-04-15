@@ -11,7 +11,12 @@ namespace WebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            MessageLabel.Text = string.Empty;
+        }
 
+        protected void NumberSequenceDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageLabel.Text = $"You selected the number {NumberSequenceDropDown.SelectedValue} which was the {NumberSequenceDropDown.SelectedItem.Text} number in the drop-down.";
         }
     }
 }

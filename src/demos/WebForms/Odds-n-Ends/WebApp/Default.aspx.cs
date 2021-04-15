@@ -47,5 +47,25 @@ namespace WebApp
             MessageLabel.Text = msg;
             MessageContainer.Attributes.Add("class", alertStyle);
         }
+
+        protected void FakeMarksDataSource_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
+            
+        }
+
+        protected void FakeMarksDataSource_Selected(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            // This is a good place to handle any exceptions.
+            if(e.Exception != null)
+            {
+                // We have a problem
+                Exception innermost = e.Exception;
+                while (innermost.InnerException != null)
+                    innermost = innermost.InnerException;
+                MessageLabel.Text = innermost.Message;
+                MessageContainer.Attributes.Add("class", "alert alert-danger");
+                e.ExceptionHandled = true;
+            }
+        }
     }
 }

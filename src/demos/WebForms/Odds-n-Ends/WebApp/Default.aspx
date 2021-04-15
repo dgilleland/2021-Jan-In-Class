@@ -66,7 +66,12 @@
                 </EmptyDataTemplate>
             </asp:GridView>
 
-            <asp:ObjectDataSource ID="FakeMarksDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCourseMarks" TypeName="MyBackendServices.BLL.FakeData" />
+            <asp:ObjectDataSource ID="FakeMarksDataSource" runat="server"
+                OldValuesParameterFormatString="original_{0}"
+                SelectMethod="ListCourseMarks"
+                OnSelecting="FakeMarksDataSource_Selecting"
+                OnSelected="FakeMarksDataSource_Selected"
+                TypeName="MyBackendServices.BLL.FakeData" />
             <asp:ObjectDataSource ID="StudyProgramDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListStudyPrograms" TypeName="MyBackendServices.BLL.FakeData" />
         </div>
     </div>
