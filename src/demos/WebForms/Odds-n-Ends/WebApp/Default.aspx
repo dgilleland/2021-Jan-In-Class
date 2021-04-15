@@ -34,11 +34,11 @@
 
             <br />
 
-            <asp:GridView ID="AdHocGridView" runat="server" 
-                AutoGenerateColumns="False" DataSourceID="FakeMarksDataSource" 
-                CssClass="table table-hover" DataKeyNames="Number" 
+            <asp:GridView ID="AdHocGridView" runat="server"
+                AutoGenerateColumns="False" DataSourceID="FakeMarksDataSource"
+                CssClass="table table-hover" DataKeyNames="Number"
                 OnSelectedIndexChanged="AdHocGridView_SelectedIndexChanged"
-                ItemType="MyBackendServices.BLL.CourseMarks">
+                ItemType="MyBackendServices.BLL.CourseMarks" AllowPaging="True" PageSize="4">
                 <Columns>
                     <asp:CommandField ShowSelectButton="true" SelectText="Redeem Credits" HeaderText="Action" />
                     <asp:BoundField DataField="Number" HeaderText="Number" SortExpression="Number"></asp:BoundField>
@@ -66,7 +66,12 @@
                 </EmptyDataTemplate>
             </asp:GridView>
 
-            <asp:ObjectDataSource ID="FakeMarksDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCourseMarks" TypeName="MyBackendServices.BLL.FakeData" />
+            <asp:ObjectDataSource ID="FakeMarksDataSource" runat="server"
+                OldValuesParameterFormatString="original_{0}"
+                SelectMethod="ListCourseMarks"
+                OnSelecting="FakeMarksDataSource_Selecting"
+                OnSelected="FakeMarksDataSource_Selected"
+                TypeName="MyBackendServices.BLL.FakeData" />
             <asp:ObjectDataSource ID="StudyProgramDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListStudyPrograms" TypeName="MyBackendServices.BLL.FakeData" />
         </div>
     </div>

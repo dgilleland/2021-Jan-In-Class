@@ -9,7 +9,7 @@ namespace WebApp
 {
     public partial class About : Page
     {
-        // Faux-database - it gets wiped every time I change code & re-run the app.
+        // Faux-database - it get wiped every time I cange code & re-run the application
         private static List<Apply> Applications = new List<Apply>();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -20,12 +20,12 @@ namespace WebApp
         protected void ApplyForJob_Click(object sender, EventArgs e)
         {
             // 0) Validation
-            if (IsValid) // Ensure the validation controls run at the server-side
+            if (IsValid) // re-run the validation control checks on the server-side
             {
                 // 0b) - Don't allow any duplicate applications (unique emails)
                 bool duplicateEmail = false;
-                foreach(var person in Applications)
-                    if(person.Email == YourEmail.Text)
+                foreach (var person in Applications)
+                    if (person.Email == YourEmail.Text)
                         duplicateEmail = true;
 
                 if (!duplicateEmail)
@@ -52,12 +52,12 @@ namespace WebApp
                     }
                     if (newApplication.Age > 50)
                     {
-                        newApplication.Comment = "We appreciate your experience, but we're ageist...";
+                        newApplication.Comment = "We appreciate your experience, but we ageist....";
                         newApplication.Rejected = true;
                     }
 
 
-                    // 2) Update the GridView with data
+                    // 2) Update the GridView with the data
                     Applications.Add(newApplication);
                     ApplicationsGridView.DataSource = Applications;
                     ApplicationsGridView.DataBind();

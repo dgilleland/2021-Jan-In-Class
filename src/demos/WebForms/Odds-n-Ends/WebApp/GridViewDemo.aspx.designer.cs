@@ -11,8 +11,17 @@ namespace WebApp
 {
 
 
-    public partial class Contact
+    public partial class GridViewDemo
     {
+
+        /// <summary>
+        /// MessageContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MessageContainer;
 
         /// <summary>
         /// MessageLabel control.
@@ -24,39 +33,30 @@ namespace WebApp
         protected global::System.Web.UI.WebControls.Label MessageLabel;
 
         /// <summary>
-        /// NumberSequenceDropDown control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NumberSequenceDropDown;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// NumberMultipleDropDown control.
+        /// StudyProgramList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NumberMultipleDropDown;
+        protected global::System.Web.UI.WebControls.RadioButtonList StudyProgramList;
 
         /// <summary>
-        /// NumberSequenceDataSource control.
+        /// AdHocGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource NumberSequenceDataSource;
-
-        /// <summary>
-        /// NumberMultipleDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource NumberMultipleDataSource;
+        protected global::System.Web.UI.WebControls.GridView AdHocGridView;
     }
 }
